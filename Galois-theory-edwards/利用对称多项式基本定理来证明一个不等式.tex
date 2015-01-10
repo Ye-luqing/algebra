@@ -1,0 +1,91 @@
+\documentclass[twoside,11pt]{article} 
+\usepackage{amsmath,amsfonts,bm}
+\usepackage{hyperref}
+\usepackage{amsthm} 
+\usepackage{amssymb}
+\usepackage{framed,mdframed}
+\usepackage{graphicx,color} 
+\usepackage{mathrsfs,xcolor} 
+\usepackage[all]{xy}
+\usepackage{fancybox} 
+% \usepackage{CJKutf8}
+\usepackage{xeCJK}
+\newtheorem{theorem}{定理}
+\newtheorem*{timu}{题目}
+\newtheorem{lemma}{引理}
+\newtheorem{corollary}{推论}
+\newtheorem*{exercise}{习题}
+\newtheorem*{example}{例}
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+\setCJKmainfont[BoldFont=Adobe Heiti Std R]{Adobe Song Std L}
+% \usepackage{latexdef}
+\def\ZZ{\mathbb{Z}} \topmargin -0.40in \oddsidemargin 0.08in
+\evensidemargin 0.08in \marginparwidth 0.00in \marginparsep 0.00in
+\textwidth 16cm \textheight 24cm \newcommand{\D}{\displaystyle}
+\newcommand{\ds}{\displaystyle} \renewcommand{\ni}{\noindent}
+\newcommand{\pa}{\partial} \newcommand{\Om}{\Omega}
+\newcommand{\om}{\omega} \newcommand{\sik}{\sum_{i=1}^k}
+\newcommand{\vov}{\Vert\omega\Vert} \newcommand{\Umy}{U_{\mu_i,y^i}}
+\newcommand{\lamns}{\lambda_n^{^{\scriptstyle\sigma}}}
+\newcommand{\chiomn}{\chi_{_{\Omega_n}}}
+\newcommand{\ullim}{\underline{\lim}} \newcommand{\bsy}{\boldsymbol}
+\newcommand{\mvb}{\mathversion{bold}} \newcommand{\la}{\lambda}
+\newcommand{\La}{\Lambda} \newcommand{\va}{\varepsilon}
+\newcommand{\be}{\beta} \newcommand{\al}{\alpha}
+\newcommand{\dis}{\displaystyle} \newcommand{\R}{{\mathbb R}}
+\newcommand{\N}{{\mathbb N}} \newcommand{\cF}{{\mathcal F}}
+\newcommand{\gB}{{\mathfrak B}} \newcommand{\eps}{\epsilon}
+\renewcommand\refname{参考文献} \def \qed {\hfill \vrule height6pt
+  width 6pt depth 0pt} \topmargin -0.40in \oddsidemargin 0.08in
+\evensidemargin 0.08in \marginparwidth0.00in \marginparsep 0.00in
+\textwidth 15.5cm \textheight 24cm \pagestyle{myheadings}
+\markboth{\rm \centerline{}} {\rm \centerline{}}
+\begin{document}
+\title{\huge{\bf{利用对称多项式基本定理来证明一个不等式}}} \author{\small{叶卢
+    庆\footnote{叶卢庆(1992---),男,杭州师范大学理学院数学与应用数学专业
+      本科在读,E-mail:h5411167@gmail.com}}\\{\small{杭州师范大学理学院,浙
+      江~杭州~310036}}} 
+\maketitle
+\vspace{30pt}
+\begin{timu}
+若 $x>0,y>0,z>0$,求证
+$$
+\frac{x^3}{x+y}+\frac{y^3}{y+z}+\frac{z^3}{z+x}\geq \frac{xy+yz+zx}{2}
+$$
+\end{timu}
+\begin{proof}[\textbf{证明}]
+我们只用证明
+  \begin{align*}
+    \frac{x^3(y+z)(z+x)+y^3(x+y)(z+x)+z^3(x+y)(y+z)}{(x+y)(y+z)(z+x)}\geq \frac{xy+yz+zx}{2}.
+  \end{align*}
+令
+$$
+\begin{cases}
+  \sigma_1=x+y+z,\\
+\sigma_2=xy+yz+zx,\\
+\sigma_3=xyz.
+\end{cases},
+$$
+易得
+$$
+(x+y)(y+z)(z+x)=\sigma_1\sigma_2-\sigma_3,
+$$
+且
+$$
+x^3(y+z)(z+x)+y^3(x+y)(z+x)+z^3(x+y)(y+z)=\sigma_1^3-3\sigma_1\sigma_2+3\sigma_3.
+$$
+则我们只用证明
+$$
+2(\sigma_1^3-3\sigma_1\sigma_2+3\sigma_3)\geq \sigma_1\sigma_2^2-\sigma_2\sigma_3.
+$$
+我做不了了,还是先放着吧.
+\end{proof}
+\end{document}
+
+
+
+
+
+
+
+

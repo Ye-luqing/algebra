@@ -1,0 +1,727 @@
+\documentclass[a4paper]{article} 
+\usepackage{amsmath,amsfonts,bm}
+\usepackage{hyperref}
+\usepackage{amsthm} 
+\usepackage{geometry}
+\usepackage{amssymb}
+\usepackage{pstricks-add}
+\usepackage{framed,mdframed}
+\usepackage{graphicx,color} 
+\usepackage{mathrsfs,xcolor} 
+\usepackage[all]{xy}
+\usepackage{fancybox} 
+% \usepackage{CJKutf8}
+\usepackage{xeCJK}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}{引理}[section]
+\newtheorem{corollary}{推论}[section]
+\newtheorem*{exercise}{习题}
+\newtheorem{example}{例}[section]
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+\setCJKmainfont[BoldFont=Adobe Heiti Std R]{Adobe Song Std L}
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+\newcommand{\D}{\displaystyle}
+\newcommand{\ds}{\displaystyle} \renewcommand{\ni}{\noindent}
+\newcommand{\pa}{\partial} \newcommand{\Om}{\Omega}
+\newcommand{\om}{\omega} \newcommand{\sik}{\sum_{i=1}^k}
+\newcommand{\vov}{\Vert\omega\Vert} \newcommand{\Umy}{U_{\mu_i,y^i}}
+\newcommand{\lamns}{\lambda_n^{^{\scriptstyle\sigma}}}
+\newcommand{\chiomn}{\chi_{_{\Omega_n}}}
+\newcommand{\ullim}{\underline{\lim}} \newcommand{\bsy}{\boldsymbol}
+\newcommand{\mvb}{\mathversion{bold}} \newcommand{\la}{\lambda}
+\newcommand{\La}{\Lambda} \newcommand{\va}{\varepsilon}
+\newcommand{\be}{\beta} \newcommand{\al}{\alpha}
+\newcommand{\dis}{\displaystyle} \newcommand{\R}{{\mathbb R}}
+\newcommand{\N}{{\mathbb N}} \newcommand{\cF}{{\mathcal F}}
+\newcommand{\gB}{{\mathfrak B}} \newcommand{\eps}{\epsilon}
+\renewcommand\refname{参考文献}
+\begin{document}
+\title{\huge{\bf{从微分观点看对称多项式基本定理}}}\date{}
+\maketitle
+对称多项式基本定理早已被Newton所知,后来又在Galois理论的建立中发挥了重
+要作用.但是其完整的叙述和证明直到19世纪中叶才出现\cite{ben}.现今对于对
+称多项式基本定理的证明有若干种,文献\cite{zhang} 采用的是字典序法,该方
+法同时给出了将对称多项式表达成基本对称多项式的多项式的具体的算法.文献
+\cite{edwards} 采用的是数学归纳法.然而这些方法都是采用了组合和代数的观
+点.下面,笔者采用多元微分学的观点来证明对称多项式基本定理,并给出
+了具体的算法.
+\section{概念与记号}
+\label{sec:1}
+\begin{itemize}
+\item $n$ 元对称多项式:关于 $r_1,r_2,\cdots,r_n$ 的多项式 $f(r_1,\cdots,r_n)$ 是对称的,如
+  果 $\forall i,j\in \{1,2,\cdots,n\}$,交换 $r_i,r_j$ 的地位导致多项式不
+  变.也就是说,$\forall i,j\in \{1,2,\cdots,n\}$,当把 $r_i$ 用 $r_j'$ 代替,将 $r_j$ 用 $r_i$ 代替,再把
+  $r_j'$ 用 $r_j$ 代替,经过这样的操作后,多项式 $f(r_1,\cdots,r_n)$ 不变,则
+  $f(r_1,\cdots,r_n)$ 是对称多项式.
+\item $n$ 元多项式的次数:设 $f(r_1,\cdots,r_n)$ 是一个多元多项式.不妨
+  设
+$$
+f(r_1,\cdots,r_n)=\sum_{i=1}^m a_ir_1^{k_{i,1}}r_2^{k_{i,2}}\cdots r_n^{k_{i,n}},
+$$
+其中 $\forall i\in \{1,2,\cdots,m\}$, $k_{i,1},\cdots,k_{i,n}$ 都为非
+负整数,$a_i$ 为系数.易得 $m$ 个数
+$$
+\sum_{j=1}^nk_{1,j},\sum_{j=1}^nk_{2,j},\cdots,\sum_{i=1}^nk_{m,j}
+$$
+中必有最大值.定义该最大值为 $n$ 元多项式 $f(r_1,\cdots,r_n)$ 的次数.
+\item 基本对称多项式 $$
+  \begin{cases}
+    \sigma_1=r_1+r_2+\cdots+r_n,\\
+\sigma_2=r_1r_2+r_1r_3+\cdots+r_{n-1}r_n,\\
+\sigma_3=r_1r_2r_3+r_1r_2r_4+\cdots+r_{n-2}r_{n-1}r_n,\\
+\vdots\\
+\sigma_n=r_1r_2\cdots r_n.
+  \end{cases}
+$$
+即,对于两两不等的 $p_1,\cdots,p_i$,
+$$
+\sigma_i=\sum_{1\leq p_1<p_2<\cdots<p_i\leq n}r_{p_1}r_{p_2}\cdots r_{p_i}.
+$$
+
+\end{itemize}
+
+\section{引理与推论}
+\label{sec:2}
+\begin{lemma}[多元反函数定理\cite{tao}]
+  设 $E$ 是 $\mathbf{R}^n$ 的开集合,并设 $f:E\to
+  \mathbf{R}^n$ 是在 $E$上连续可微的函数.假设 $\mathbf{x_0}\in E$ 使得
+  线性变换$f'(\mathbf{x_0}):\mathbf{R}^n\to \mathbf{R}^n$ 是可逆的,那么
+  存在含有$\mathbf{x_0}$ 的开集 $U\subset E$ 以及含
+  有 $f(\mathbf{x_0})$ 的开集$V\subset
+  \mathbf{R}^n$,使得 $f$ 是从 $U$到 $V$ 的双射,而且逆映射$f^{-1}:V\to
+  U$ 在点 $f(\mathbf{x_0})$ 处可微,而且
+$$
+(f^{-1})'(f(\mathbf{x_0}))=(f'(\mathbf{x_0}))^{-1}.
+$$
+\end{lemma}
+\begin{proof}[\bf{证明}]
+  见 \cite{tao}.
+\end{proof}
+\begin{lemma}
+  设 $r_1,\cdots,r_n$ 为两两不等的实数,映射 $f:M\to
+  \mathbf{R}^n$,其中$f((r_1,\cdots,r_n))=(\sigma_1,\cdots,\sigma_n)$,且
+  $M\subset \mathbf{R}^n$ 是 $\mathbf{R}^n$ 中的一个开集,且 $\forall
+  \mathbf{x}\in M$,当把 $\mathbf{x}$ 写成坐标分量的形式,也就
+  是$\mathbf{x}=(x_1,\cdots,x_n)$ 时,有 $x_1,\cdots,x_n$ 两两不等.则我
+  们有对于任意的 $\mathbf{r}\in M$,$f'(\mathbf{r})$ 可逆.因此
+  在$r_1,\cdots,r_n$ 两两不等时, $\sigma_1,\cdots,\sigma_n$ 函数无关,于
+  是在$r_1,\cdots,r_{n}$ 两两不等时,关于 $r_1,\cdots,r_n$ 的任意连续可
+  微函数也能表达成关于 $\sigma_1,\cdots,\sigma_n$ 的连续可微函数.
+
+\end{lemma}
+\begin{proof}[\bf{证明}]
+  设 $\mathbf{r}=(r_1,\cdots,r_n)$,于是也就是证明Jacobi 行列式
+$$
+\begin{vmatrix}
+  \frac{\partial \sigma_1}{\partial r_1}&\frac{\partial
+    \sigma_1}{\partial
+    r_2}&\cdots&\frac{\partial\sigma_1}{\partial r_n}\\
+  \frac{\partial \sigma_2}{\partial r_1}&\frac{\partial
+    \sigma_2}{\partial
+    r_2}&\cdots&\frac{\partial\sigma_2}{\partial r_n}\\
+  \vdots&\vdots&\cdots&\vdots\\
+  \frac{\partial \sigma_n}{\partial r_1}&\frac{\partial
+    \sigma_n}{\partial r_2}&\cdots&\frac{\partial\sigma_n}{\partial
+    r_n}
+\end{vmatrix}\neq 0.
+$$
+下面我们来证明
+\begin{equation}\label{eq:1}
+  \begin{vmatrix}
+    \frac{\pa \sigma_1}{\pa r_1}&\frac{\pa \sigma_1}{\pa
+      r_2}&\cdots&\frac{\pa\sigma_1}{\pa r_n}\\
+    \frac{\pa \sigma_2}{\pa r_1}&\frac{\pa \sigma_2}{\pa
+      r_2}&\cdots&\frac{\pa\sigma_2}{\pa r_n}\\
+    \vdots&\vdots&\cdots&\vdots\\
+    \frac{\pa \sigma_n}{\pa r_1}&\frac{\pa \sigma_n}{\pa
+      r_2}&\cdots&\frac{\pa\sigma_n}{\pa r_n}
+  \end{vmatrix}=\prod_{1\leq i<j\leq n} (r_i-r_j)\neq 0.
+\end{equation}
+我们不打算通过按步就班的计算和归纳法来证明式 \eqref{eq:1},取而代之的,是
+采用一种观察的方法.为此,我们先来考察特殊情形. $n=2$ 时的情形很简单,即
+$$ \begin{vmatrix}
+  \frac{\pa \sigma_1}{\pa r_1}&\frac{\pa \sigma_1}{\pa r_2}\\
+  \frac{\pa \sigma_2}{\pa r_1}&\frac{\pa \sigma_2}{\pa r_2}
+\end{vmatrix}=
+\begin{vmatrix}
+  1&1\\
+  r_2&r_1\\
+\end{vmatrix}=r_1-r_2.
+$$
+当 $n=3$ 时,可得
+\begin{equation}\label{eq:2}
+  \begin{vmatrix}
+    \frac{\pa \sigma_1}{\pa r_1}&\frac{\pa\sigma_1}{\pa r_2}&\frac{\pa
+      \sigma_1}{\pa r_3}\\
+    \frac{\pa \sigma_2}{\pa r_1}&\frac{\pa \sigma_2}{\pa
+      r_2}&\frac{\pa
+      \sigma_2}{\pa r_3}\\
+    \frac{\pa \sigma_3}{\pa r_1}&\frac{\pa\sigma_3}{\pa r_2}&\frac{\pa
+      \sigma_3}{\pa r_3}
+  \end{vmatrix}=
+  \begin{vmatrix}
+    1&1&1\\
+    r_2+r_3&r_1+r_3&r_1+r_2\\
+    r_2r_3&r_1r_3&r_1r_2
+  \end{vmatrix}=(r_1-r_2)(r_2-r_3)(r_1-r_3)
+\end{equation}\label{eq:3}
+怎么得到式 \eqref{eq:2} 呢?根据行列式的性质,易得
+当 $r_1=r_2$ 或者$r_1=r_3$ 或者 $r_2=r_3$ 时,有
+\begin{equation}
+  \begin{vmatrix}
+    1&1&1\\
+    r_2+r_3&r_1+r_3&r_1+r_2\\
+    r_2r_3&r_1r_3&r_1r_2\\
+  \end{vmatrix}=0,
+\end{equation}
+而且易得行列式 \eqref{eq:3} 是关于 $r_1,r_2,r_3$ 的多项
+式$v(r_1,r_2,r_3)$,因此可得 $v(r_1,r_2,r_3)$ 有因
+式$(r_1-r_2),(r_1-r_3),(r_2-r_3)$,于是 $v(r_1,r_2,r_3)$ 有因
+式$(r_1-r_2)(r_1-r_3)(r_2-r_3)$.再通过行列
+式 \eqref{eq:3} 里项 $r_1^2r_2$的符号和次数,可以确
+定 $v(r_1,r_2,r_3)=(r_1-r_2)(r_1-r_3)(r_2-r_3)$.这样就得
+到了 \eqref{eq:3} 式的结果.\\
+
+对于一般的情形 $n$,完全可以仿照 $n=3$ 时的情形来论证,从而容易得到
+式 \eqref{eq:1}.
+\end{proof}
+
+
+      \begin{corollary}
+        设 $r_1,\cdots,r_n$ 为两两不等的实数,映射 $f:M\to
+        \mathbf{R}^n$,其中
+        $f((r_1,\cdots,r_n))=(\sigma_1,\cdots,\sigma_n)$,且 $M\subset
+        \mathbf{R}^n$ 是 $\mathbf{R}^n$ 中的一个开集.且 $\forall
+        \mathbf{x}\in \mathbf{R}^n$,当把$\mathbf{x}$ 写成坐标分量的形
+        式,也就是 $\mathbf{x}=(x_1,\cdots,x_n)$时,有 $x_1,\cdots,x_n$两
+        两不等.则对于任意的$\mathbf{r}=(r_1,\cdots,r_n)\in M$,存在含
+        有 $\mathbf{r}$ 的开集$U\subset M$,以及含有 $f(\mathbf{r})$ 的
+        开集 $V\subset \mathbf{R}^n$,使得 $f$ 是从 $U$ 到 $V$ 的双射,而且逆映
+        射 $f^{-1}:V\to U$ 在点$f(\mathbf{r})$ 处可微,且
+$$
+(f^{-1})'(f(\mathbf{r}))=(f'(\mathbf{r}))^{-1},
+$$
+也即,存在双射 $f^{-1}:V\to
+U$,使得$f^{-1}((\sigma_1,\cdots,\sigma_n))=(r_1,\cdots,r_n)$,且
+$$
+\begin{pmatrix}
+  \frac{\pa r_1}{\pa \sigma_1}&\frac{\pa r_1}{\pa
+    \sigma_2}&\cdots&\frac{\pa
+    r_1}{\pa \sigma_n}\\
+  \frac{\pa r_2}{\pa \sigma_1}&\frac{\pa r_2}{\pa
+    \sigma_2}&\cdots&\frac{\pa
+    r_2}{\pa \sigma_n}\\
+  \vdots&\vdots&\cdots&\vdots\\
+  \frac{\pa r_n}{\pa \sigma_1}&\frac{\pa r_n}{\pa
+    \sigma_2}&\cdots&\frac{\pa r_n}{\pa \sigma_n}
+\end{pmatrix}=
+\begin{pmatrix}
+  \frac{\pa \sigma_1}{\pa r_1}&\frac{\pa\sigma_1}{\pa
+    r_2}&\cdots&\frac{\pa
+    \sigma_1}{\pa r_n}\\
+  \frac{\pa \sigma_2}{\pa r_1}&\frac{\pa \sigma_2}{\pa
+    r_2}&\cdots&\frac{\pa
+    \sigma_2}{\pa r_n}\\
+  \vdots&\vdots&\cdots&\vdots\\
+  \frac{\pa \sigma_n}{\pa r_1}&\frac{\pa\sigma_n}{\pa
+    r_2}&\cdots&\frac{\pa \sigma_n}{\pa r_n}
+\end{pmatrix}^{-1}.
+$$
+\end{corollary}
+\begin{proof}[\bf{证明}]
+  由引理2.1和引理2.2结合起来很容易得到证明.
+\end{proof}
+
+      \begin{corollary}
+        设 $r_1,\cdots,r_n$ 为互不相等的实数,且关于$r_1,\cdots,r_n$的多
+        项式$f(r_1,\cdots,r_n)$ 是从 $M$ 到 $\mathbf{R}$ 的映
+        射,其中$M$ 为 $\mathbf{R}^n$ 的开子集,且 $\forall
+        \mathbf{x}\in M$,当$\mathbf{x}$ 写成坐标形
+        式 $(x_1,\cdots,x_n)$ 时,有$x_1,\cdots,x_n$ 两两不等.则$n$ 个偏
+        导数
+$$
+\frac{\pa f}{\pa \sigma_1},\cdots,\frac{\pa f}{\pa \sigma_n}
+$$
+都存在.
+\end{corollary}
+
+\begin{proof}[\bf{证明}]
+  也即证明向量
+$$
+\begin{pmatrix}
+  \frac{\pa f}{\pa\sigma_1}&\cdots&\frac{\pa f}{\pa \sigma_n}
+\end{pmatrix}
+$$
+存在.这由多元链法则结合推论2.1可以得到证明.具体地来说,设 $g:M\to
+\mathbf{R}^n$ 为从 $M$ 到 $\mathbf{R}^n$ 的映
+射,且 $g((r_1,\cdots,r_n))=(\sigma_1,\cdots,\sigma_n)$.根据推
+论2.1,$\forall \mathbf{r}=(r_1,\cdots,r_n)\in M$,都存在含
+有 $\mathbf{r}$的开集 $U\subset M$,使得 $g:U\to V$ 是从 $U$ 到 $V$ 的
+双射,其中 $V$ 是 $\mathbf{R}^n$ 中的开集,且
+$$
+(g^{-1})'(g(\mathbf{r}))=(g'(\mathbf{r}))^{-1},
+$$
+也即,
+\begin{equation}\label{eq:20.04}
+  \begin{pmatrix}
+    \frac{\pa r_1}{\pa \sigma_1}&\frac{\pa r_1}{\pa
+      \sigma_2}&\cdots&\frac{\pa
+      r_1}{\pa \sigma_n}\\
+    \frac{\pa r_2}{\pa \sigma_1}&\frac{\pa r_2}{\pa
+      \sigma_2}&\cdots&\frac{\pa
+      r_2}{\pa \sigma_n}\\
+    \vdots&\vdots&\cdots&\vdots\\
+    \frac{\pa r_n}{\pa \sigma_1}&\frac{\pa r_n}{\pa
+      \sigma_2}&\cdots&\frac{\pa r_n}{\pa \sigma_n}
+  \end{pmatrix}=
+  \begin{pmatrix}
+    \frac{\pa \sigma_1}{\pa r_1}&\frac{\pa\sigma_1}{\pa
+      r_2}&\cdots&\frac{\pa
+      \sigma_1}{\pa r_n}\\
+    \frac{\pa \sigma_2}{\pa r_1}&\frac{\pa \sigma_2}{\pa
+      r_2}&\cdots&\frac{\pa
+      \sigma_2}{\pa r_n}\\
+    \vdots&\vdots&\cdots&\vdots\\
+    \frac{\pa \sigma_n}{\pa r_1}&\frac{\pa\sigma_n}{\pa
+      r_2}&\cdots&\frac{\pa \sigma_n}{\pa r_n}
+  \end{pmatrix}^{-1}.
+\end{equation}
+且易得向量
+$$
+\begin{pmatrix}
+  \frac{\pa f}{\pa r_1}& \frac{\pa f}{\pa r_2}& \cdots& \frac{\pa
+    f}{\pa r_n}
+\end{pmatrix}
+$$
+存在,因此结合式 \eqref{eq:20.04} 和根据多元复合函数的链法则,
+$$
+\begin{pmatrix}
+  \frac{\pa f}{\pa \sigma_1}& \frac{\pa f}{\pa \sigma_2}& \cdots&
+  \frac{\pa f}{\pa \sigma_n}
+\end{pmatrix}
+$$
+不仅存在,而且有
+\begin{align*}
+  \begin{pmatrix}
+    \frac{\pa f}{\pa \sigma_1}& \frac{\pa f}{\pa \sigma_2}& \cdots&
+    \frac{\pa f}{\pa \sigma_n}
+  \end{pmatrix}&=\begin{pmatrix} \frac{\pa f}{\pa r_1}& \frac{\pa
+      f}{\pa r_2}& \cdots& \frac{\pa f}{\pa r_n}
+  \end{pmatrix}\begin{pmatrix}
+    \frac{\pa r_1}{\pa \sigma_1}&\frac{\pa r_1}{\pa
+      \sigma_2}&\cdots&\frac{\pa
+      r_1}{\pa \sigma_n}\\
+    \frac{\pa r_2}{\pa \sigma_1}&\frac{\pa r_2}{\pa
+      \sigma_2}&\cdots&\frac{\pa
+      r_2}{\pa \sigma_n}\\
+    \vdots&\vdots&\cdots&\vdots\\
+    \frac{\pa r_n}{\pa \sigma_1}&\frac{\pa r_n}{\pa
+      \sigma_2}&\cdots&\frac{\pa r_n}{\pa \sigma_n}
+  \end{pmatrix}\\&=\begin{pmatrix} \frac{\pa f}{\pa r_1}& \frac{\pa
+      f}{\pa r_2}& \cdots& \frac{\pa f}{\pa r_n}
+  \end{pmatrix}\begin{pmatrix}
+    \frac{\pa \sigma_1}{\pa r_1}&\frac{\pa\sigma_1}{\pa
+      r_2}&\cdots&\frac{\pa
+      \sigma_1}{\pa r_n}\\
+    \frac{\pa \sigma_2}{\pa r_1}&\frac{\pa \sigma_2}{\pa
+      r_2}&\cdots&\frac{\pa
+      \sigma_2}{\pa r_n}\\
+    \vdots&\vdots&\cdots&\vdots\\
+    \frac{\pa \sigma_n}{\pa r_1}&\frac{\pa\sigma_n}{\pa
+      r_2}&\cdots&\frac{\pa \sigma_n}{\pa r_n}
+  \end{pmatrix}^{-1}.
+\end{align*}
+\end{proof}
+
+    \begin{lemma}
+      当 $r_1,\cdots,r_n$ 为互不相等的实数时,
+      \begin{eqnarray}
+        \begin{pmatrix}
+          \frac{\pa r_1}{\pa \sigma_1}&\frac{\pa r_1}{\pa
+            \sigma_2}&\cdots&\frac{\pa
+            r_1}{\pa \sigma_n}\\
+          \frac{\pa r_2}{\pa \sigma_1}&\frac{\pa r_2}{\pa
+            \sigma_2}&\cdots&\frac{\pa
+            r_2}{\pa \sigma_n}\\
+          \vdots&\vdots&\cdots&\vdots\\
+          \frac{\pa r_n}{\pa \sigma_1}&\frac{\pa r_n}{\pa
+            \sigma_2}&\cdots&\frac{\pa r_n}{\pa \sigma_n}
+        \end{pmatrix}&=\begin{pmatrix} \frac{\pa \sigma_1}{\pa
+            r_1}&\frac{\pa\sigma_1}{\pa r_2}&\cdots&\frac{\pa
+            \sigma_1}{\pa r_n}\\
+          \frac{\pa \sigma_2}{\pa r_1}&\frac{\pa \sigma_2}{\pa
+            r_2}&\cdots&\frac{\pa
+            \sigma_2}{\pa r_n}\\
+          \vdots&\vdots&\cdots&\vdots\\
+          \frac{\pa \sigma_n}{\pa r_1}&\frac{\pa\sigma_n}{\pa
+            r_2}&\cdots&\frac{\pa \sigma_n}{\pa r_n}
+        \end{pmatrix}^{-1}\\&=\begin{pmatrix}
+          a_{11}&a_{12}&\cdots &a_{1n}\\
+          a_{21}&a_{22}&\cdots&a_{2n}\\
+          \vdots&\vdots&\cdots&\vdots\\
+          a_{n1}&a_{n2}&\cdots&a_{nn}
+        \end{pmatrix},
+      \end{eqnarray}
+      其中
+$$
+a_{ij}=\frac{(-1)^{j+1}r_i^{n-j}}{\prod_{k\neq i;1\leq k\leq
+    n}(r_i-r_k)}.
+$$
+举两个例子,$n=2$ 时,
+$$
+\begin{pmatrix}
+  \frac{\pa r_1}{\pa \sigma_1}&\frac{\pa r_1}{\pa \sigma_2}\\
+  \frac{\pa r_2}{\pa \sigma_1}&\frac{\pa r_2}{\pa \sigma_2}
+\end{pmatrix}=\begin{pmatrix}
+  \frac{r_1}{r_1-r_2}&\frac{-1}{r_1-r_2}\\
+  \frac{r_2}{r_2-r_1}&\frac{-1}{r_2-r_1}
+\end{pmatrix}.
+$$
+$n=3$ 时,
+$$
+\begin{pmatrix}
+  \frac{\pa r_1}{\pa \sigma_1}&\frac{\pa r_1}{\pa \sigma_2}&\frac{\pa
+    r_1}{\pa \sigma_3}\\
+  \frac{\pa r_2}{\pa \sigma_1}&\frac{\pa r_2}{\pa \sigma_2}&\frac{\pa
+    r_2}{\pa \sigma_3}\\
+  \frac{\pa r_3}{\pa \sigma_1}&\frac{\pa r_3}{\pa \sigma_2}&\frac{\pa
+    r_3}{\pa \sigma_3}\\
+\end{pmatrix}=\begin{pmatrix}
+  \frac{r_1^2}{(r_1-r_2)(r_1-r_3)}&\frac{-r_1}{(r_1-r_2)(r_1-r_3)}&\frac{1}{(r_1-r_2)(r_1-r_3)}\\
+  \frac{r_2^2}{(r_2-r_1)(r_2-r_3)}&\frac{-r_2}{(r_2-r_1)(r_2-r_3)}&\frac{1}{(r_2-r_1)(r_2-r_3)}\\
+  \frac{r_3^2}{(r_3-r_2)(r_3-r_1)}&\frac{-r_3}{(r_3-r_2)(r_3-r_1)}&\frac{1}{(r_3-r_2)(r_3-r_1)}\\
+\end{pmatrix}.
+$$
+等等.
+\end{lemma}
+\begin{proof}[\bf{证明}]
+  式 (5) 中的等号是推论2.1的直接结论.关键是证明式(6)中的等号.为此我们来
+  看行列式
+$$
+\begin{vmatrix}
+  \frac{\pa\sigma_1}{\pa r_1}&\frac{\pa\sigma_1}{\pa
+    r_2}&\cdots&\frac{\pa\sigma_1}{\pa r_n}\\
+  \frac{\pa\sigma_2}{\pa r_1}&\frac{\pa\sigma_2}{\pa
+    r_2}&\cdots&\frac{\pa \sigma_2}{\pa r_n}\\
+  \vdots&\vdots&\cdots&\vdots\\
+  \frac{\pa \sigma_n}{\pa r_1}&\frac{\pa \sigma_n}{\pa
+    r_2}&\cdots&\frac{\pa\sigma_n}{\pa r_n}
+\end{vmatrix}
+$$
+中 $\frac{\pa\sigma_j}{\pa r_i}$ 的代数余子式.仿照对引理2.1的证明方
+法,易得$\frac{\pa\sigma_j}{\pa r_i}$ 的代数余子式为
+\begin{equation}\label{eq:12.53}
+  (-1)^{i+j}r^{n-j}\prod_{1\leq p<q\leq n;p,q\neq i}(r_{p}-r_{q}),
+\end{equation}
+因此根据伴随矩阵与可逆矩阵的关系,结合
+式 \eqref{eq:1} 和式 \eqref{eq:12.53},可得式(6).
+\end{proof}
+\begin{lemma}
+  设$r_1,\cdots,r_n$ 为互不相等的实数,且 $f(r_1,\cdots,r_n)$ 为关于
+  $r_1,\cdots,r_n$ 的对称多项式,则
+  \begin{equation}\label{eq:10.16}
+    \sum_{i=1}^{n}\frac{\frac{\pa f}{\pa r_i}}{\prod_{1\leq p\leq n;p\neq i}(r_i-r_p)}
+  \end{equation}
+  为关于 $r_1,\cdots,r_n$ 的对称多项
+  式.
+\end{lemma}
+\begin{proof}[\bf{证明}]
+  式 \eqref{eq:10.16}关于 $r_1,\cdots,r_n$ 的对称性是显然的,关键是证明
+  该式是关于$r_1,\cdots,r_n$ 的多项式.为此,将式 \eqref{eq:10.16} 化为
+  \begin{equation}
+    \label{eq:10.26}
+    \frac{1}{\prod_{1\leq c<d\leq
+        n}(r_c-r_d)}\sum_{i=1}^n\left((-1)^{i+1}\frac{\pa f}{\pa r_i}\prod_{1\leq p<q\leq n;p,q\neq i}(r_p-r_q)\right).
+  \end{equation}
+  我们只用证明
+  \begin{equation}
+    \label{eq:12.08}
+    \sum_{i=1}^n\left((-1)^{i+1}\frac{\pa f}{\pa r_{i}}\prod_{1\leq p<q\leq n;p,q\neq i}(r_p-r_q)\right)
+  \end{equation}
+  有因式 $\prod_{1\leq c<d\leq n}(r_c-r_d)$ 即可.在式 \ref{eq:12.08}中
+  令 $r_i=r_j$,其中 $i,j$ 为 $\{1,\cdots,n\}$ 中的任意两个不同的数,此
+  时易得式 \eqref{eq:12.08} 会成为$0$.因此 \eqref{eq:12.08} 有因式$\prod_{1\leq c<d\leq n}(r_c-r_d)$.
+\end{proof}
+\begin{lemma}
+  设 $r_1,\cdots,r_n$ 为两两不等的实数.若关于 $r_1,\cdots,r_n$ 的次数不
+  大于 $m$ 的所有对称多项式能表示成基本对称多项
+  式 $\sigma_1,\cdots,\sigma_n$ 的多项式,则关于 $r_1,\cdots,r_n$ 的次数
+  为 $m+1$ 的对称多项式也能表达成基本对称多项
+  式 $\sigma_1,\cdots,\sigma_n$ 的多项式.
+\end{lemma}
+\begin{proof}[\bf{证明}]
+  设 $f(r_1,\cdots,r_n)$ 为关于 $r_1,\cdots,r_n$ 的次数为 $m+1$ 的对称
+  多项式.根据推论2.2,$\forall 1\leq j\leq n$,$\frac{\pa
+    f}{\pa\sigma_j}$ 存在,且
+  \begin{equation}\label{eq:2.58}
+    \frac{\pa f}{\pa\sigma_j}=\sum_{i=1}^n\frac{\pa f}{\pa r_i}\frac{\pa r_i}{\pa\sigma_j}.
+  \end{equation}
+结合引
+  理2.3,式\eqref{eq:2.58} 可以变为
+  \begin{equation}
+    \label{eq:3.00}
+    \begin{split}
+      \frac{\pa f}{\pa
+        \sigma_j}&=\sum_{i=1}^n\left((-1)^{j+1}\frac{\pa f}{\pa r_i}\frac{r_i^{n-j}}{\prod_{1\leq
+            p\leq n;p\neq
+            i}(r_i-r_p)}\right)\\&=(-1)^{j+1}\sum_{i=1}^n\left(\frac{\pa
+        f}{\pa r_i}r_i^{n-j}\frac{1}{\prod_{1\leq
+            p\leq n;p\neq i}(r_i-r_p)} \right).
+    \end{split}
+  \end{equation}
+易得 $\frac{\pa f}{\pa r_i}r_{i}^{n-j}$ 必定是某个对称多项式关于 $r_i$ 的
+偏导数,因此根据引
+  理2.4,式 \eqref{eq:3.00} 是一个关于 $r_1,\cdots,r_n$ 的对称多项式.而
+  且易得只要 $f(r_1,\cdots,r_n)$ 的次数不小于$1$,那么对称多项
+  式\eqref{eq:3.00}的次数就会低于 $f(r_1,\cdots,r_n)$的次数.因此,对称多
+  项式 \eqref{eq:3.00} 是一个次数不大于 $m$ 的对称多项式.而由题设陈
+  述,\eqref{eq:3.00} 可以表达成$\sigma_1,\cdots,\sigma_n$ 的多项式,不妨
+  让式 \eqref{eq:3.00} 按照$\sigma_j$ 的降幂排列,即写成
+  \begin{equation}\label{eq:3.42}
+    \frac{\pa f}{\pa \sigma_j}=A_1(\sigma_1,\cdots,\sigma_{j-1},\sigma_{j+1},\cdots,\sigma_n)\sigma_j^{l_1}+\cdots+A_s(\sigma_1,\cdots,\sigma_{j-1},\sigma_{j+1},\cdots,\sigma_n)\sigma_j^{l_s},
+  \end{equation}
+  其中 $l_1\geq \cdots \geq l_s$ 都是非负整数,且$\forall 1\leq i\leq
+  n$,
+  $A_i(\sigma_1,\cdots,\sigma_{j-1},\sigma_{j+1},\cdots,\sigma_n)$都是
+  关于 $\sigma_1,\cdots,\sigma_{j-1},\sigma_{j+1},\cdots,\sigma_n$的多
+  项式.由于 $\sigma_1,\cdots,\sigma_n$ 函数无关(引理2.2),因此对
+  式\eqref{eq:3.42} 两边积分可得
+  \begin{equation}\label{eq:4.24}
+    f(r_1,\cdots,r_n)=\sum_{i=1}^{s}\frac{1}{1+l_i}A_1(\sigma_1,\cdots,\sigma_{j-1},\sigma_{j+1},\cdots,\sigma_n)\sigma_j^{l_i+1}+C(\sigma_{1},\cdots,\sigma_{j-1},\sigma_{j+1},\cdots,\sigma_n),
+  \end{equation}
+  其中 $C(\sigma_1,\cdots,\sigma_{j-1},\sigma_{j+1},\cdots,\sigma_n)$
+  是关于 $\sigma_1,\cdots,\sigma_{j-1},\sigma_{j+1},\cdots,\sigma_n$ 的
+  连
+  续可微函数.\\
+
+  下面我们证
+  明$C(\sigma_1,\cdots,\sigma_{j-1},\sigma_{j+1},\cdots,\sigma_n)$ 其实
+  是关于 $\sigma_1,\cdots,\sigma_{j-1},\sigma_{j+1},\cdots,\sigma_n$的
+  多项式,这是容易的,因为根据式 \eqref{eq:4.24},$f(r_1,\cdots,r_n)$可以
+  表达成任意一个变量 $\sigma_h(1\leq h\leq n)$ 的多项
+  式,假如
+  $C(\sigma_1,\cdots,\sigma_{j-1},\sigma_{j+1},\cdots,\sigma_n)$ 不是关
+  于$\sigma_1,\cdots,\sigma_{j-1},\sigma_{j+1},\cdots,\sigma_n$的多项
+  式,那么必定存在 $h\in
+  \{1,\cdots,j-1,j+1,\cdots,n\}$,使得$f(r_1,\cdots,r_n)$ 不能表达
+  为 $\sigma_h$ 的多项式,矛盾.这样我们就证明
+  了 $C(\sigma_1,\cdots,\sigma_{j-1},\sigma_{j+1},\cdots,\sigma_n)$ 其
+  实是关
+  于 $\sigma_1,\cdots,\sigma_{j-1},\sigma_{j+1},\cdots,\sigma_n$的多项
+  式,于是 $f(r_1,\cdots,r_n)$ 是关于 $\sigma_1,\cdots,\sigma_n$的多项式.
+\end{proof}
+\section{对称多项式基本定理}
+
+      \begin{theorem}[对称多项式基本定理]
+        任意一个关于 $r_1,r_2,\cdots,r_n$ 的对称多项
+        式 $f(r_1,\cdots,r_n)$都可以表达为基本对称多项
+        式 $\sigma_1,\sigma_2,\cdots,\sigma_n$ 的多项式.
+      \end{theorem}
+
+\begin{proof}[\bf{证明}]
+在对称多项式基本定理里,我们完全可以令 $r_1,\cdots,r_n$ 为互不相等的实
+数.然后我们用数学归纳法证明该命题.当 $f(r_1,\cdots,r_n)$ 是次数为1 的
+对称多项式时,显然 
+$$
+f(r_1,\cdots,r_n)=a(r_1+\cdots+r_n)=a\sigma_1,
+$$
+其中 $a$ 为常数.结合引理2.5和数学归纳法,可得当 $f(r_1,\cdots,r_n)$ 的
+次数为任意的自然数时,都可以表示为基本对称多项式
+$\sigma_1,\cdots,\sigma_n$ 的多项式.这样就完成了证明.
+\end{proof}
+\section{例子}
+\label{sec:3}
+下面我们来举出一些具体的例子,以此更好地阐述以及应用上面的理论.并通过这
+些例子,呈现出具体的算法.
+\begin{example}
+  当 $n=2$ 时,我们尝试将对称多项式 $f(r_1,r_2)=r_1^2+r_2^2$ 表示
+  成$\sigma_1,\sigma_2$ 的多项式.很容易看出
+  来$f(r_1,r_2)=\sigma_1^2-2\sigma_2$.下面我们用本文中阐述的方法导出这
+  个结论,而不是直接观察出这个结论.不妨令 $r_1,r_2$ 为互不相等的实数,则
+\begin{align*}
+\begin{pmatrix}
+  \frac{\pa f}{\pa \sigma_1}&\frac{\pa f}{\pa \sigma_2}
+\end{pmatrix}&=\begin{pmatrix}
+\frac{\pa f}{\pa r_1}&\frac{\pa f}{\pa r_2}
+\end{pmatrix}\begin{pmatrix}
+  \frac{\pa r_1}{\pa \sigma_1}&\frac{\pa r_1}{\pa \sigma_2}\\
+\frac{\pa r_2}{\pa \sigma_1}&\frac{\pa r_2}{\pa \sigma_{2}}
+\end{pmatrix}\\&=\begin{pmatrix}
+  \frac{\pa f}{\pa r_1}&\frac{\pa f}{\pa r_2}
+\end{pmatrix}\begin{pmatrix}
+  \frac{\pa \sigma_1}{\pa r_1}&\frac{\pa\sigma_1}{\pa r_2}\\
+\frac{\pa \sigma_2}{\pa r_1}&\frac{\pa\sigma_2}{\pa r_2}
+\end{pmatrix}^{-1}\\&=\begin{pmatrix}
+  2r_1&2r_2
+\end{pmatrix}\begin{pmatrix}
+  \frac{r_1}{r_1-r_2}&\frac{-1}{r_1-r_2}\\
+\frac{r_2}{r_2-r_1}&\frac{-1}{r_2-r_1}
+\end{pmatrix}\\&=\begin{pmatrix}
+  2(r_1+r_2)&-2
+\end{pmatrix}\\&=\begin{pmatrix}
+  2\sigma_1&-2
+\end{pmatrix}.
+\end{align*}
+因此, $f(r_1,r_2)=\sigma_1^2-2\sigma_2+C$,易得常数 $C=0$.
+\end{example}
+
+\begin{example}
+  当 $n=3$ 时,我们尝试将对称多项式 $f(r_1,r_2,r_3)=r_1^2+r_2^2+r_3^2$表
+  示为 $\sigma_1,\sigma_2,\sigma_3$ 的多项式.不妨令 $r_1,r_2,r_3$ 为互
+  不相等的实数,则
+\begin{align*}
+  \begin{pmatrix}
+    \frac{\pa f}{\pa \sigma_1}&\frac{\pa f}{\pa \sigma_2}&\frac{\pa
+      f}{\pa \sigma_3}
+  \end{pmatrix}&=\begin{pmatrix} \frac{\pa f}{\pa r_1}&\frac{\pa
+      f}{\pa r_2}&\frac{\pa f}{\pa r_3}
+  \end{pmatrix}\begin{pmatrix}
+    \frac{\pa r_1}{\pa \sigma_1}&\frac{\pa r_1}{\pa
+      \sigma_2}&\frac{\pa
+      r_1}{\pa \sigma_3}\\
+    \frac{\pa r_2}{\pa \sigma_1}&\frac{\pa r_2}{\pa
+      \sigma_2}&\frac{\pa
+      r_2}{\pa \sigma_3}\\
+    \frac{\pa r_3}{\pa \sigma_1}&\frac{\pa r_3}{\pa
+      \sigma_2}&\frac{\pa r_3}{\pa \sigma_3}
+  \end{pmatrix}\\&=\begin{pmatrix}
+    \frac{\pa f}{\pa r_1}&\frac{\pa f}{\pa r_2}&\frac{\pa f}{\pa r_3}
+  \end{pmatrix}\begin{pmatrix}
+    \frac{\pa \sigma_1}{\pa r_1}&\frac{\pa \sigma_1}{\pa
+      r_2}&\frac{\pa \sigma_1}{\pa r_3}\\
+\frac{\pa \sigma_2}{\pa r_1}&\frac{\pa \sigma_2}{\pa r_2}&\frac{\pa
+  \sigma_2}{\pa r_3}\\
+\frac{\pa\sigma_3}{\pa r_1}&\frac{\pa \sigma_3}{\pa r_2}&\frac{\pa
+  \sigma_3}{\pa r_3}
+  \end{pmatrix}^{-1}\\&=\begin{pmatrix}
+    2r_1&2r_2&2r_3
+  \end{pmatrix}\begin{pmatrix}
+  \frac{r_1^2}{(r_1-r_2)(r_1-r_3)}&\frac{-r_1}{(r_1-r_2)(r_1-r_3)}&\frac{1}{(r_1-r_2)(r_1-r_3)}\\
+  \frac{r_2^2}{(r_2-r_1)(r_2-r_3)}&\frac{-r_2}{(r_2-r_1)(r_2-r_3)}&\frac{1}{(r_2-r_1)(r_2-r_3)}\\
+  \frac{r_3^2}{(r_3-r_2)(r_3-r_1)}&\frac{-r_3}{(r_3-r_2)(r_3-r_1)}&\frac{1}{(r_3-r_2)(r_3-r_1)}\\    
+  \end{pmatrix}\\&=\begin{pmatrix}
+    2(x_1+x_2+x_3)&-2&0
+  \end{pmatrix}\\&=\begin{pmatrix}
+    2\sigma_1&-2&0
+  \end{pmatrix}.
+\end{align*}
+因此可得$f(r_1,r_2,r_3)=\sigma_1^2-2\sigma_2+C$,易得常数 $C=0$.
+\end{example}
+\begin{example}
+  当 $n=3$ 时,我们尝试将对称多项式 $f(r_1,r_2,r_3)=r_1^3+r_2^3+r_3^3$表
+  示为 $\sigma_1,\sigma_2,\sigma_3$ 的多项式.不妨令 $r_1,r_2,r_3$ 为互
+  不相等的实数,则
+\begin{align*}
+  \begin{pmatrix}
+    \frac{\pa f}{\pa \sigma_1}&\frac{\pa f}{\pa \sigma_2}&\frac{\pa
+      f}{\pa \sigma_3}
+  \end{pmatrix}&=\begin{pmatrix} \frac{\pa f}{\pa r_1}&\frac{\pa
+      f}{\pa r_2}&\frac{\pa f}{\pa r_3}
+  \end{pmatrix}\begin{pmatrix}
+    \frac{\pa r_1}{\pa \sigma_1}&\frac{\pa r_1}{\pa
+      \sigma_2}&\frac{\pa
+      r_1}{\pa \sigma_3}\\
+    \frac{\pa r_2}{\pa \sigma_1}&\frac{\pa r_2}{\pa
+      \sigma_2}&\frac{\pa
+      r_2}{\pa \sigma_3}\\
+    \frac{\pa r_3}{\pa \sigma_1}&\frac{\pa r_3}{\pa
+      \sigma_2}&\frac{\pa r_3}{\pa \sigma_3}
+  \end{pmatrix}\\&=\begin{pmatrix}
+    \frac{\pa f}{\pa r_1}&\frac{\pa f}{\pa r_2}&\frac{\pa f}{\pa r_3}
+  \end{pmatrix}\begin{pmatrix}
+    \frac{\pa \sigma_1}{\pa r_1}&\frac{\pa \sigma_1}{\pa
+      r_2}&\frac{\pa \sigma_1}{\pa r_3}\\
+\frac{\pa \sigma_2}{\pa r_1}&\frac{\pa \sigma_2}{\pa r_2}&\frac{\pa
+  \sigma_2}{\pa r_3}\\
+\frac{\pa\sigma_3}{\pa r_1}&\frac{\pa \sigma_3}{\pa r_2}&\frac{\pa
+  \sigma_3}{\pa r_3}
+  \end{pmatrix}^{-1}\\&=\begin{pmatrix}
+    3r_1^2&3r_2^2&3r_3^2
+  \end{pmatrix}\begin{pmatrix}
+  \frac{r_1^2}{(r_1-r_2)(r_1-r_3)}&\frac{-r_1}{(r_1-r_2)(r_1-r_3)}&\frac{1}{(r_1-r_2)(r_1-r_3)}\\
+  \frac{r_2^2}{(r_2-r_1)(r_2-r_3)}&\frac{-r_2}{(r_2-r_1)(r_2-r_3)}&\frac{1}{(r_2-r_1)(r_2-r_3)}\\
+  \frac{r_3^2}{(r_3-r_2)(r_3-r_1)}&\frac{-r_3}{(r_3-r_2)(r_3-r_1)}&\frac{1}{(r_3-r_2)(r_3-r_1)}\\      
+  \end{pmatrix}\\&=\begin{pmatrix}
+    3(x_1^2+x_2^2+x_3^2+x_1x_2+x_2x_3+x_3x_1)&-3(x_1+x_2+x_3)&3
+  \end{pmatrix}.
+\end{align*}
+根据例4.2,
+$$
+x_1^2+x_2^2+x_3^2=\sigma_1^2-2\sigma_2,
+$$
+因此我们最终得到
+$$
+\begin{pmatrix}
+  \frac{\pa f}{\pa \sigma_1}&\frac{\pa f}{\pa \sigma_2}&\frac{\pa
+    f}{\pa \sigma_3}
+\end{pmatrix}=3\begin{pmatrix} \sigma_1^2-\sigma_2&-\sigma_1&1
+\end{pmatrix}.
+$$
+因此
+解得
+$$
+f(r_1,r_2,r_3)=\sigma_1^3-3\sigma_1\sigma_2+3\sigma_3+C.
+$$
+易得常数 $C$ 为$0$.
+\end{example}
+\begin{example}
+  当 $n=3$ 时,我们尝试将对称多项式
+  $f(r_1,r_2,r_3)=r_1^2r_2+r_{2}^{2}r_{1}+r_2^2r_3+r_{3}^{2}r_{2}+r_3^2r_1+r_1^2r_3$ 表示为
+  $\sigma_1,\sigma_2,\sigma_3$ 的多项式.不妨令 $r_1,r_2,r_3$ 为互不相
+  等的实数,则
+\begin{align*}
+  \begin{pmatrix}
+    \frac{\pa f}{\pa \sigma_1}&\frac{\pa f}{\pa \sigma_2}&\frac{\pa
+      f}{\pa \sigma_3}
+  \end{pmatrix}&=\begin{pmatrix} \frac{\pa f}{\pa r_1}&\frac{\pa
+      f}{\pa r_2}&\frac{\pa f}{\pa r_3}
+  \end{pmatrix}\begin{pmatrix}
+    \frac{\pa r_1}{\pa \sigma_1}&\frac{\pa r_1}{\pa
+      \sigma_2}&\frac{\pa
+      r_1}{\pa \sigma_3}\\
+    \frac{\pa r_2}{\pa \sigma_1}&\frac{\pa r_2}{\pa
+      \sigma_2}&\frac{\pa
+      r_2}{\pa \sigma_3}\\
+    \frac{\pa r_3}{\pa \sigma_1}&\frac{\pa r_3}{\pa
+      \sigma_2}&\frac{\pa r_3}{\pa \sigma_3}
+  \end{pmatrix}\\&=\begin{pmatrix}
+    \frac{\pa f}{\pa r_1}&\frac{\pa f}{\pa r_2}&\frac{\pa f}{\pa r_3}
+  \end{pmatrix}\begin{pmatrix}
+    \frac{\pa \sigma_1}{\pa r_1}&\frac{\pa \sigma_1}{\pa
+      r_2}&\frac{\pa \sigma_1}{\pa r_3}\\
+\frac{\pa \sigma_2}{\pa r_1}&\frac{\pa \sigma_2}{\pa r_2}&\frac{\pa
+  \sigma_2}{\pa r_3}\\
+\frac{\pa\sigma_3}{\pa r_1}&\frac{\pa \sigma_3}{\pa r_2}&\frac{\pa
+  \sigma_3}{\pa r_3}
+  \end{pmatrix}^{-1}\\&=\begin{pmatrix}
+    2r_1r_2+2r_{1}r_{3}+r_{2}^{2}+r_3^2&2r_2r_3+2r_{2}r_{1}+r_1^2+r_{3}^2&2r_3r_1+2r_{3}r_{2}+r_2^2+r_1^{2}
+  \end{pmatrix}\\&\begin{pmatrix}
+  \frac{r_1^2}{(r_1-r_2)(r_1-r_3)}&\frac{-r_1}{(r_1-r_2)(r_1-r_3)}&\frac{1}{(r_1-r_2)(r_1-r_3)}\\
+  \frac{r_2^2}{(r_2-r_1)(r_2-r_3)}&\frac{-r_2}{(r_2-r_1)(r_2-r_3)}&\frac{1}{(r_2-r_1)(r_2-r_3)}\\
+  \frac{r_3^2}{(r_3-r_2)(r_3-r_1)}&\frac{-r_3}{(r_3-r_2)(r_3-r_1)}&\frac{1}{(r_3-r_2)(r_3-r_1)}\\        
+  \end{pmatrix}\\&=\begin{pmatrix}
+  r_1r_{2}+r_{2}r_{3}+r_{3}r_{1} & r_{1}+r_{2}+r_{3}&-3
+  \end{pmatrix}\\&=\begin{pmatrix}
+    \sigma_2&\sigma_1&-3
+  \end{pmatrix}.
+\end{align*}
+因此解得 $f(r_1,r_2,r_3)=\sigma_1\sigma_2-3\sigma_3+C$,易得常数 $C=0$.
+\end{example}
+\begin{thebibliography}{}
+\bibitem[1]{ben}Ben Blum-Smith,Samuel Coskey, The Fundamental Theorem on
+  Symmetric Polynomials:History's First Whiff of Galois Theory,预印本. \href{http://arxiv.org/abs/1301.7116}{arXiv: 1301.7116}.
+\bibitem[2]{zhang}张禾瑞,郝鈵新.高等代数[M].第五版.北京:高等教育出版
+  社,2007:91-98
+\bibitem[3]{edwards}Harold M.Edwards. Galois theory. Springer-Verlag, New York,1984
+\bibitem[4]{tao}Terence Tao.陶哲轩实分析[M].王昆扬,译.北京:人民邮电出版
+  社,2008:376
+\end{thebibliography}
+\end{document}
+
+
+
+
+
+
+
+

@@ -1,0 +1,81 @@
+\documentclass[a4paper]{article} 
+\usepackage{amsmath,amsfonts,bm}
+\usepackage{hyperref}
+\usepackage{amsthm} 
+\usepackage{geometry}
+\usepackage{amssymb}
+\usepackage{pstricks-add}
+\usepackage{framed,mdframed}
+\usepackage{graphicx,color} 
+\usepackage{mathrsfs,xcolor} 
+\usepackage[all]{xy}
+\usepackage{fancybox} 
+\usepackage{xeCJK}
+\newtheorem*{theorem}{定理}
+\newtheorem*{lemma}{引理}
+\newtheorem*{corollary}{推论}
+\newtheorem*{exercise}{习题}
+\newtheorem*{example}{例}
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+\setCJKmainfont[BoldFont=Adobe Heiti Std R]{Adobe Song Std L}
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+\newcommand{\D}{\displaystyle}\newcommand{\ri}{\Rightarrow}
+\newcommand{\ds}{\displaystyle} \renewcommand{\ni}{\noindent}
+\newcommand{\pa}{\partial} \newcommand{\Om}{\Omega}
+\newcommand{\om}{\omega} \newcommand{\sik}{\sum_{i=1}^k}
+\newcommand{\vov}{\Vert\omega\Vert} \newcommand{\Umy}{U_{\mu_i,y^i}}
+\newcommand{\lamns}{\lambda_n^{^{\scriptstyle\sigma}}}
+\newcommand{\chiomn}{\chi_{_{\Omega_n}}}
+\newcommand{\ullim}{\underline{\lim}} \newcommand{\bsy}{\boldsymbol}
+\newcommand{\mvb}{\mathversion{bold}} \newcommand{\la}{\lambda}
+\newcommand{\La}{\Lambda} \newcommand{\va}{\varepsilon}
+\newcommand{\be}{\beta} \newcommand{\al}{\alpha}
+\newcommand{\dis}{\displaystyle} \newcommand{\R}{{\mathbb R}}
+\newcommand{\N}{{\mathbb N}} \newcommand{\cF}{{\mathcal F}}
+\newcommand{\gB}{{\mathfrak B}} \newcommand{\eps}{\epsilon}
+\renewcommand\refname{参考文献}
+\begin{document}
+\title{\huge\red{\bf{为了浙大而奋斗:利用特征向量解三次方程}}} \author{\small{叶卢
+    庆\footnote{叶卢庆(1992---),男,杭州师范大学理学院数学与应用数学专业
+      本科在读,为了浙大而不懈奋斗!E-mail:h5411167@gmail.com}}\\{\small{杭州师范大学理学院,浙
+      江~杭州~310036}}}
+\maketitle
+易得矩阵
+$$
+A=\begin{pmatrix}
+  -p&-q&-r\\
+1&0&0\\
+0&1&0
+\end{pmatrix}
+$$
+的特征方程为
+$$
+\lambda^3+p\lambda^2+q\lambda+r=0,
+$$
+其中 $p,q,r\in \mathbf{R}$.设特征方程有三个不同的实根
+$\lambda_1,\lambda_2,\lambda_3$,对应的特征向量分别为
+$\mathbf{v_1,v_2,v_3}$,也即,
+$$
+A(\mathbf{v_1})=\lambda_1\mathbf{v_1},A(\mathbf{v_2})=\lambda_2\mathbf{v_2},A(\mathbf{v_3})=\lambda_3\mathbf{v_3}.
+$$
+不妨设
+$$
+\mathbf{v_1}=(\lambda_1^2,\lambda_1,1),\mathbf{v_2}=(\lambda_2^2,\lambda_2,1),\mathbf{v_3}=(\lambda_3^2,\lambda_3,1).
+$$
+设
+$$
+\begin{cases}
+  \alpha_1\mathbf{v_1}+\alpha_2\mathbf{v_2}+\alpha_3\mathbf{v_3}=(0,0,1),\\
+  \beta_1\mathbf{v_1}+\beta_2\mathbf{v_2}+\beta_3\mathbf{v_3}=(0,1,0),\\
+  \gamma_1\mathbf{v_1}+\gamma_2\mathbf{v_2}+\gamma_3\mathbf{v_3}=(1,0,0).\\
+\end{cases}
+$$
+
+\end{document}
+
+
+
+
+
+
+

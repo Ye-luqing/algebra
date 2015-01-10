@@ -1,0 +1,176 @@
+\documentclass[twoside,11pt]{article} \usepackage{amsmath,amsfonts,bm}
+\usepackage{hyperref,xkeyval} \usepackage{amsthm,tikz}
+\usetikzlibrary{shapes,decorations} \usepackage{amssymb}
+\usepackage{framed,mdframed} \usepackage{graphicx,color}
+\usepackage{mathrsfs,xcolor} \usepackage[all]{xy}
+\usepackage{fancybox}\usepackage{color}
+% \usepackage{CJKutf8}
+\usepackage{xeCJK} \newtheorem{theorem}{定理}[section] \newtheorem{lemma}{引理}[section]
+\newtheorem{corollary}{推论}[section] \newtheorem*{exercise}{习
+  题}\newtheorem{remark}{注}[section]
+\newtheorem{example}{例}[section] \setCJKmainfont[BoldFont=Adobe Heiti Std
+R]{Adobe Song Std L}
+% \usepackage{latexdef}
+
+ \topmargin -0.40in \oddsidemargin 0.08in
+\def\ZZ{\mathbb{Z}}\evensidemargin 0.08in \marginparwidth 0.00in \marginparsep 0.00in
+\textwidth 16cm \textheight 24cm 
+
+\newcommand{\D}{\displaystyle}
+\newcommand{\ds}{\displaystyle} \renewcommand{\ni}{\noindent}
+\newcommand{\pa}{\partial} \newcommand{\Om}{\Omega}
+\newcommand{\om}{\omega} \newcommand{\sik}{\sum_{i=1}^k}
+\newcommand{\vov}{\Vert\omega\Vert} \newcommand{\Umy}{U_{\mu_i,y^i}}
+\newcommand{\lamns}{\lambda_n^{^{\scriptstyle\sigma}}}
+\newcommand{\chiomn}{\chi_{_{\Omega_n}}}
+\newcommand{\ullim}{\underline{\lim}} \newcommand{\bsy}{\boldsymbol}
+\newcommand{\mvb}{\mathversion{bold}} \newcommand{\la}{\lambda}
+\newcommand{\La}{\Lambda} \newcommand{\va}{\varepsilon}
+\newcommand{\be}{\beta} \newcommand{\al}{\alpha}
+\newcommand{\dis}{\displaystyle} \newcommand{\R}{{\mathbb R}}
+\newcommand{\N}{{\mathbb N}} \newcommand{\cF}{{\mathcal F}}
+\newcommand{\gB}{{\mathfrak B}} \newcommand{\eps}{\epsilon}
+\renewcommand\refname{参考文献}
+
+ \def \qed {\hfill \vrule height6pt
+  width 6pt depth 0pt} \topmargin -0.40in \oddsidemargin 0.08in
+\evensidemargin 0.08in \marginparwidth0.00in \marginparsep 0.00in
+\textwidth 15.5cm \textheight 24cm \pagestyle{myheadings}
+\markboth{\rm \centerline{}} {\rm \centerline{}} 
+
+\tikzstyle{mybox} =
+[draw=black, fill=white, rectangle, rounded corners, inner sep=10pt,
+inner ysep=20pt]
+\begin{document}
+\title{\huge{\textbf{推导Newton公式}}} \author{\small{叶卢
+    庆\footnote{叶卢庆(1992---),男,杭州师范大学理学院数学与应用数学专业
+      本科在读,E-mail:h5411167@gmail.com}}\\{\small{杭州师范大学理学院,浙
+      江杭州~310036}}} \date{}
+\maketitle
+我们先来探究 $n=2$ 的情形
+$$
+r_1^2+r_2^2=(r_{1}+r_{2})^{2}-2r_{1}r_{2}.
+$$
+$$
+r_1^3+r_2^3=(r_1+r_2)(r_1^2+r_2^2)-(r_1r_2^2+r_2r_1^2)=(r_1+r_2)(r_1^{2}+r_{2}^{2})-r_1r_2(r_1+r_2).
+$$
+\begin{align*}
+  r_1^4+r_2^4&=(r_1+r_2)(r_1^3+r_2^3)-r_1r_2(r_1^2+r_2^2).
+\end{align*}
+$$
+\vdots
+$$
+$$
+r_1^{k+2}+r_2^{k+2}=(r_1+r_2)(r_1^{k+1}+r_2^{k+2})-r_1r_2(r_1^k+r_2^k).
+$$
+我们再来探究 $n=3$ 的情形.此时,
+\begin{align*}
+  r_1^2+r_2^2+r_3^2=(r_1+r_2+r_3)^2-2(r_1r_2+r_1r_3+r_2r_3),
+\end{align*}
+\begin{align*}
+  r_1^3+r_2^3+r_3^3&=(r_1+r_2+r_3)(r_1^{2}+r_2^2+r_3^2)-(r_1r_2^2+r_1r_3^2+r_2r_1^2+r_2r_3^2+r_3r_1^2+r_3r_2^2)\\&=(r_1+r_2+r_3)(r_1^2+r_2^2+r_3^2)-(r_1r_2+r_2r_3+r_1r_3)(r_1+r_2+r_3)+3r_1r_2r_3.
+\end{align*}
+\begin{align*}
+  r_1^4+r_2^4+r_3^4&=(r_1+r_2+r_3)(r_1^3+r_2^3+r_3^3)-(r_1r_2^3+r_1r_3^3+r_2r_1^3+r_2r_3^3+r_3r_1^3+r_3r_2^3)\\&=(r_1+r_2+r_3)(r_1^3+r_2^3+r_3^3)-(r_1^2+r_2^2+r_3^2)(r_1r_2+r_2r_3+r_3r_1)+r_1r_2r_3(r_1+r_2+r_3).
+\end{align*}
+\begin{align*}
+  r_1^5+r_2^5+r_3^5&=(r_1+r_2+r_3)(r_1^{4}+r_2^4+r_3^4)-(r_1r_2^4+r_1r_3^4+r_2r_3^4+r_2r_1^4+r_3r_1^4+r_3r_2^4)\\&=(r_1+r_2+r_3)(r_1^4+r_{2}^4+r_3^4)-(r_1^3+r_2^3+r_3^3)(r_1r_2+r_2r_3+r_3r_1)+r_1r_2r_3(r_1^2+r_2^2+r_3^2).
+\end{align*}
+\begin{align*}
+  r_1^6+r_2^6+r_3^6&=(r_1+r_2+r_3)(r_1^5+r_2^5+r_3^5)-(r_1r_2^5+r_1r_3^5+r_2r_1^5+r_2r_3^5+r_3r_1^5+r_3r_2^5)\\&=(r_1+r_2+r_3)(r_1^5+r_2^5+r_3^5)-(r_1^4+r_2^4+r_3^4)(r_1r_2+r_2r_3+r_3r_1)+r_1r_2r_3(r_1^3+r_2^3+r_3^3).
+\end{align*}
+$$
+\vdots
+$$
+\begin{align*}
+  r_1^{k+3}+r_2^{k+3}+r_3^{k+3}&=(r_1+r_2+r_3)(r_1^{k+2}+r_2^{k+2}+r_1^{k+2})-(r_1r_2+r_2r_3+r_3r_1)(r_1^{k+1}+r_2^{k+1}+r_3^{k+1})\\&+r_1r_2r_3(r_1^k+r_2^k+r_3^k).
+\end{align*}
+我们再来探究 $n=4$ 的情形.
+\begin{align*}
+  r_1^{2}+r_2^{2}+r_3^{2}+r_4^2=(r_1+r_2+r_3+r_4)^2-2(r_1r_2+r_1r_3+r_1r_4+r_2r_3+r_2r_4+r_3r_4).
+\end{align*}
+\begin{align*}
+  r_1^3+r_2^3+r_3^3+r_4^3&=(r_1+r_2+r_3+r_4)(r_1^2+r_2^2+r_3^2+r_4^2)\\&-(r_1r_2^2+r_1r_3^2+r_1r_4^2+r_2r_1^2+r_2r_3^2+r_2r_4^2+r_3r_1^2+r_3r_2^2+r_3r_4^2+r_4r_1^2+r_4r_2^2+r_4r_3^2)\\&=(r_1+r_2+r_3+r_4)(r_1^2+r_2^2+r_3^2+r_4^2)\\&-(r_1r_2+r_1r_3+r_1r_4+r_2r_3+r_2r_4+r_3r_4)(r_1+r_2+r_3+r_4)\\&+3(r_1r_2r_3+r_1r_2r_4+r_1r_3r_4+r_2r_3r_4)
+\end{align*}
+\begin{align*}
+  r_1^4+r_2^4+r_3^4+r_4^4&=(r_1+r_2+r_3+r_4)(r_1^3+r_2^3+r_3^3+r_4^3)\\&-(r_1r_2^3+r_1r_3^3+r_1r_4^3+r_2r_1^3+r_2r_3^3+r_2r_4^3+r_3r_1^3+r_3r_2^3+r_3r_4^3+r_4r_1^3+r_4r_2^3+r_4r_3^3)\\&=(r_1+r_2+r_3+r_4)(r_1^3+r_2^3+r_3^3+r_4^3)\\&-(r_1^2+r_2^2+r_3^2+r_4^2)(r_1r_2+r_1r_3+r_1r_4+r_2r_3+r_2r_4+r_3r_4)+\sum
+  r_1^2r_2r_3\\&=\sum r_1\sum r_1^3-\sum r_1^2\sum r_1r_2+\sum
+  r_1r_2r_3\sum r_1-4r_1r_2r_3r_4
+\end{align*}
+\begin{align*}
+  \sum r_1^5&=\sum r_1\sum r_1^4-\sum r_1r_2^4\\&=\sum r_1\sum
+  r_1^4-\sum r_1r_2\sum r_1^3+\sum r_1r_2r_3^3\\&=\sum r_1\sum
+  r_1^4-\sum r_1r_2\sum r_1^3+\sum r_1r_2r_3\sum r_1^2-\sum
+  r_1r_2r_3r_4^2\\&=\sum r_1\sum r_1^4-\sum r_1r_2\sum r_1^3+\sum
+  r_1r_2r_3\sum r_1^2-r_1r_2r_3r_4\sum r_1
+\end{align*}
+\begin{align*}
+  \sum r_1^6&=\sum r_1\sum r_1^5-\sum r_1r_2^5\\&=\sum r_1\sum
+  r_1^5-\sum r_1r_2\sum r_2^4+\sum r_1r_2r_3^4\\&=\sum r_1\sum
+  r_1^5-\sum r_1r_2\sum r_2^4+\sum r_1r_2r_3\sum r_1^3-\sum
+  r_1r_2r_3r_4^3\\&=\sum r_1\sum r_1^5-\sum r_1r_2\sum r_2^4+\sum
+  r_1r_2r_3\sum r_1^3-r_1r_2r_3r_4\sum r_1^2.
+\end{align*}
+等等.
+\iffalse
+
+
+\begin{align*}
+  \begin{pmatrix}
+    \frac{\pa f}{\pa \sigma_1}&\frac{\pa f}{\pa \sigma_2}&\frac{\pa
+      f}{\pa \sigma_3}
+  \end{pmatrix}&=\begin{pmatrix} \frac{\pa f}{\pa r_1}&\frac{\pa
+      f}{\pa r_2}&\frac{\pa f}{\pa r_3}
+  \end{pmatrix}\begin{pmatrix}
+    \frac{\pa r_1}{\pa \sigma_1}&\frac{\pa r_1}{\pa
+      \sigma_2}&\frac{\pa
+      r_1}{\pa \sigma_3}\\
+    \frac{\pa r_2}{\pa \sigma_1}&\frac{\pa r_2}{\pa
+      \sigma_2}&\frac{\pa
+      r_2}{\pa \sigma_3}\\
+    \frac{\pa r_3}{\pa \sigma_1}&\frac{\pa r_3}{\pa
+      \sigma_2}&\frac{\pa r_3}{\pa \sigma_3}
+  \end{pmatrix}\\&=\begin{pmatrix}
+    \frac{\pa f}{\pa r_1}&\frac{\pa f}{\pa r_2}&\frac{\pa f}{\pa r_3}
+  \end{pmatrix}\begin{pmatrix}
+    \frac{\pa \sigma_1}{\pa r_1}&\frac{\pa \sigma_1}{\pa
+      r_2}&\frac{\pa \sigma_1}{\pa r_3}\\
+\frac{\pa \sigma_2}{\pa r_1}&\frac{\pa \sigma_2}{\pa r_2}&\frac{\pa
+  \sigma_2}{\pa r_3}\\
+\frac{\pa\sigma_3}{\pa r_1}&\frac{\pa \sigma_3}{\pa r_2}&\frac{\pa
+  \sigma_3}{\pa r_3}
+  \end{pmatrix}^{-1}\\&=\begin{pmatrix}
+    kr_1^{k-1}&kr_2^{k-1}&kr_3^{k-1}
+  \end{pmatrix}\begin{pmatrix}
+  \frac{r_1^2}{(r_1-r_2)(r_1-r_3)}&\frac{-r_1}{(r_1-r_2)(r_1-r_3)}&\frac{1}{(r_1-r_2)(r_1-r_3)}\\
+  \frac{r_2^2}{(r_2-r_1)(r_2-r_3)}&\frac{-r_2}{(r_2-r_1)(r_2-r_3)}&\frac{1}{(r_2-r_1)(r_2-r_3)}\\
+  \frac{r_3^2}{(r_3-r_2)(r_3-r_1)}&\frac{-r_3}{(r_3-r_2)(r_3-r_1)}&\frac{1}{(r_3-r_2)(r_3-r_1)}\\            
+  \end{pmatrix}.
+\end{align*}
+下面我们来研究和式
+\begin{equation}\label{eq:11.10}
+\frac{r_1^a}{(r_1-r_2)(r_1-r_3)}+\frac{r_2^a}{(r_2-r_1)(r_2-r_3)}+\frac{r_3^a}{(r_3-r_2)(r_3-r_1)},
+\end{equation}
+其中 $a$ 是非负整数.显然,当 $a=0,1$ 时,如上和式的值为$0$,当 $a=2$ 时,如
+上和式的值为$1$.而当 $a=3$ 时,如上和式的值经过计算可得为
+$r_1+r_2+r_3=\sigma_1$.当 $a=4$ 时,具体的计算如下:
+\begin{align*}
+  \frac{r_1^4}{(r_1-r_2)(r_1-r_3)}+\frac{r_2^4}{(r_2-r_1)(r_2-r_3)}+\frac{r_3^4}{(r_3-r_2)(r_3-r_1)}&=\frac{r_1^{4}(r_{2}-r_{3})-r_{2}^{4}(r_{1}-r_{3})+r_{3}^{4}(r_{1}-r_{2})}{(r_1-r_2)(r_1-r_3)(r_2-r_3)}\\&=r_1^2+r_2^2+r_3^2+r_1r_2+r_2r_3+r_3r_1\\&=\sigma_1^2-\sigma_2.
+\end{align*}
+当 $a=5$ 时,
+\begin{align*}
+  \frac{r_1^5}{(r_1-r_2)(r_1-r_3)}+\frac{r_2^5}{(r_2-r_1)(r_2-r_3)}+\frac{r_3^5}{(r_3-r_2)(r_3-r_1)}&=\frac{r_1^{5}(r_{2}-r_{3})-r_{2}^{5}(r_{1}-r_{3})+r_{3}^{5}(r_{1}-r_{2})}{(r_1-r_2)(r_1-r_3)(r_2-r_3)}\\&=
+\end{align*}
+
+\fi
+
+\end{document}
+
+
+
+
+
+
+
+
+
