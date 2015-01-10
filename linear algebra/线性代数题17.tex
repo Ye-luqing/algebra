@@ -1,0 +1,75 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{bm}
+\usepackage{draftwatermark}
+\SetWatermarkText{http://blog.sciencenet.cn/u/Yaleking}%设置水印文字
+\SetWatermarkLightness{0.8}%设置水印亮度
+\SetWatermarkScale{0.35}%设置水印大小
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{yhmath}
+\usepackage{pstricks-add}
+\usepackage{framed,mdframed}
+\usepackage{graphicx,color} 
+\usepackage{mathrsfs,xcolor} 
+\usepackage[all]{xy}
+\usepackage{fancybox} 
+\usepackage{xeCJK}
+\newtheorem{theo}{定理}
+\newtheorem*{exe}{题目}
+\newtheorem*{rem}{评论}
+\newmdtheoremenv{lemma}{引理}
+\newmdtheoremenv{corollary}{推论}
+\newmdtheoremenv{example}{例}
+\newenvironment{theorem}
+{\bigskip\begin{mdframed}\begin{theo}}
+    {\end{theo}\end{mdframed}\bigskip}
+\newenvironment{exercise}
+{\bigskip\begin{mdframed}\begin{exe}}
+    {\end{exe}\end{mdframed}\bigskip}
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+\newcommand{\D}{\displaystyle}\newcommand{\ri}{\Rightarrow}
+\newcommand{\ds}{\displaystyle} \renewcommand{\ni}{\noindent}
+\newcommand{\pa}{\partial} \newcommand{\Om}{\Omega}
+\newcommand{\om}{\omega} \newcommand{\sik}{\sum_{i=1}^k}
+\newcommand{\vov}{\Vert\omega\Vert} \newcommand{\Umy}{U_{\mu_i,y^i}}
+\newcommand{\lamns}{\lambda_n^{^{\scriptstyle\sigma}}}
+\newcommand{\chiomn}{\chi_{_{\Omega_n}}}
+\newcommand{\ullim}{\underline{\lim}} \newcommand{\bsy}{\boldsymbol}
+\newcommand{\mvb}{\mathversion{bold}} \newcommand{\la}{\lambda}
+\newcommand{\La}{\Lambda} \newcommand{\va}{\varepsilon}
+\newcommand{\be}{\beta} \newcommand{\al}{\alpha}
+\newcommand{\dis}{\displaystyle} \newcommand{\R}{{\mathbb R}}
+\newcommand{\N}{{\mathbb N}} \newcommand{\cF}{{\mathcal F}}
+\newcommand{\gB}{{\mathfrak B}} \newcommand{\eps}{\epsilon}
+\renewcommand\refname{参考文献}\renewcommand\figurename{图}
+\usepackage[]{caption2} 
+\renewcommand{\captionlabeldelim}{}
+\begin{document}
+\title{\huge{\bf{线性代数,习题17}}} \author{\small{叶卢
+    庆\footnote{叶卢庆(1992---),男,杭州师范大学理学院数学与应用数学专业
+      本科在读,E-mail:yeluqingmathematics@gmail.com}}}
+\maketitle
+\begin{exercise}
+  设 $f,g$ 为$[-1,1]$ 上的连续复值函数,满足 $\int_{-1}^1|f(x)|^2dx=9,\int_{-1}^1|g(x)|^2dx=16$.
+  \begin{itemize}
+  \item $\int_{-1}^1f(x)\overline{g(x)}dx$ 可能取什么值?
+\item $\int_{-1}^1|f(x)+g(x)|^2dx$ 可能取到什么值?
+  \end{itemize}
+\end{exercise}
+\begin{proof}[\textbf{证明}]
+  \begin{itemize}
+  \item 根据Cauchy-Schwartz 定理,
+$$-12\leq|\int_{-1}^1f(x)\overline{g(x)}dx|\leq 12.$$
+因此,$\int_{-1}^1f(x)\overline{g(x)}dx$ 可以取到 $\{a+bi|a,b\in
+\mathbf{R},0\leq a^2+b^2\leq 144\}$ 中的值.
+\item 
+  \begin{align*}
+    \int_{-1}^1|f(x)+g(x)|^2dx&=\int_{-1}^1(f(x)+g(x))(\overline{f(x)}+\overline{g(x)})dx\\&=\int_{-1}^1(|f(x)|^2+f(x)\overline{g(x)}+g(x)\overline{f(x)}+|g(x)|^2)dx\\&=\int_{-1}^1(f(x)\overline{g(x)}+g(x)\overline{f(x)})dx+25,
+  \end{align*}
+而 $1\leq\int_{-1}^1(f(x)\overline{g(x)}+g(x)\overline{f(x)})dx+25\leq 49$.
+  \end{itemize}
+\end{proof}
+\end{document}

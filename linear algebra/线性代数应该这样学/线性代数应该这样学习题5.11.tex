@@ -1,0 +1,91 @@
+\documentclass[a4paper]{article}
+\usepackage{CJK}
+\usepackage{amsmath,amsfonts,amsthm,amssymb}
+\usepackage{bm,ctex}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{yhmath,epigraph}
+\usepackage{framed,mdframed}
+\usepackage{graphicx,color}
+\usepackage{mathrsfs,xcolor}
+\usepackage[all]{xy}
+\usepackage{fancybox,diagbox}
+\usepackage{draftwatermark}
+\hypersetup{CJKbookmarks=true}
+\SetWatermarkText{http://blog.sciencenet.cn/u/Yaleking}%设置水印文字
+\SetWatermarkLightness{0.8}%设置水印亮度
+\SetWatermarkScale{0.35}%设置水印大小
+\renewcommand\arraystretch{1.5}
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+\newcommand{\D}{\displaystyle}\newcommand{\ri}{\Rightarrow}
+\newcommand{\ds}{\displaystyle} \renewcommand{\ni}{\noindent}
+\newcommand{\pa}{\partial} \newcommand{\Om}{\Omega}
+\newcommand{\om}{\omega} \newcommand{\sik}{\sum_{i=1}^k}
+\newcommand{\vov}{\Vert\omega\Vert} \newcommand{\Umy}{U_{\mu_i,y^i}}
+\newcommand{\lamns}{\lambda_n^{^{\scriptstyle\sigma}}}
+\newcommand{\chiomn}{\chi_{_{\Omega_n}}}
+\newcommand{\ullim}{\underline{\lim}} \newcommand{\bsy}{\boldsymbol}
+\newcommand{\mvb}{\mathversion{bold}} \newcommand{\la}{\lambda}
+\newcommand{\La}{\Lambda} \newcommand{\va}{\varepsilon}
+\newcommand{\be}{\beta} \newcommand{\al}{\alpha}
+\newcommand{\dis}{\displaystyle} \newcommand{\R}{{\mathbb R}}
+\newcommand{\N}{{\mathbb N}} \newcommand{\cF}{{\mathcal F}}
+\newcommand{\gB}{{\mathfrak B}} \newcommand{\eps}{\epsilon}
+\renewcommand\refname{参考文献}\renewcommand\figurename{图}
+\newcommand{\hei}{\CJKfamily{hei}}
+\usepackage[]{caption2}
+\renewcommand{\captionlabeldelim}{}
+\begin{document}
+\begin{CJK*}{GBK}{song}
+  \newtheorem*{theo}{定理} \newtheorem*{exe}{题目}
+  \newmdtheoremenv{lemma}{引理} \newmdtheoremenv{corollary}{推论}
+  \newmdtheoremenv{example}{例} \newenvironment{theorem}
+  {\bigskip\begin{mdframed}\begin{theo}}
+      {\end{theo}\end{mdframed}\bigskip} \newenvironment{exercise}
+  {\bigskip\begin{mdframed}\begin{exe}}
+      {\end{exe}\end{mdframed}\bigskip}
+  \renewcommand{\today}{\number\year~ 年~\number\month~ 月
+    ~\number\day~ 日}
+  \title{\hei{线性代数应该这样学,习题5.11}} \author{\small{叶
+    卢庆\footnote{叶卢庆(1992---),男,杭州师范大学理学院数学与应用数学专
+      业本科在读,E-mail:yeluqingmathematics@gmail.com}}}
+\maketitle
+\epigraph{矩阵的行列式和特征值对于矩阵的微扰不敏感,但是矩阵的可逆性和可对角化性对于矩阵的微扰是敏感的.因此我们可以利用矩阵的微扰,改变矩阵的可逆性或者可对角化性,却基本不改变矩阵的行列式和特征值.利用这一点可以解决一类问题.}{叶卢庆.}
+\begin{exercise}
+设$S,T\in \mathcal{L}(V)$.证明$ST$和$TS$有相同的本征值.
+\end{exercise}
+\begin{proof}[\textbf{解}]
+设$\lambda$是$ST$的一个本征值,于是,
+$$
+\det (ST-\lambda I)=0.
+$$
+当$T$可逆时,上式化为
+$$
+\det(ST-\lambda T^{-1}T)=0.
+$$
+根据行列式的乘法定理,
+$$
+\det (S-\lambda T^{-1})=0.
+$$
+再用一次行列式的乘法定理,可得
+$$
+\det (TS-\lambda TT^{-1})=\det (TS-\lambda I)=0.
+$$
+于是$\lambda$也是$TS$的特征值.当$T$不可逆然而$S$可逆时,仿照上述方法,依
+旧能推出$\lambda$是$TS$的特征值.\\
+
+\ni 当$T$和$S$都不可逆时,\href{http://blog.sciencenet.cn/home.php?mod=space&uid=604208&do=blog&id=823541}{必定存在$\varepsilon>0$,使得$T+\varepsilon I$
+可逆.}且由于行列式对于矩阵的微扰不敏感,因此
+$$
+\lim_{\varepsilon\to 0;\det (T+\varepsilon I)\neq 0}\det (S(T+\varepsilon I)-\lambda I)=0.
+$$
+于是
+$$
+\lim_{\varepsilon\to 0;\det (T+\varepsilon I)\neq 0}\det
+((T+\varepsilon I)S-\lambda I)=\det (TS-\lambda I)\neq 0.
+$$
+于是$\lambda$依旧是$TS$的特征值.
+\end{proof}
+\end{CJK*}
+\end{document}
+

@@ -1,0 +1,96 @@
+﻿\documentclass[a4paper]{article}
+\usepackage{amsmath,amsfonts,amsthm,amssymb} \usepackage{bm}
+\usepackage{draftwatermark}
+\SetWatermarkText{http://blog.sciencenet.cn/u/Yaleking}%设置水印文字
+\SetWatermarkLightness{0.8}%设置水印亮度
+\SetWatermarkScale{0.35}%设置水印大小
+\usepackage{hyperref} \usepackage{geometry} \usepackage{yhmath}
+\usepackage{pstricks-add} \usepackage{framed,mdframed}
+\usepackage{graphicx,color} \usepackage{mathrsfs,xcolor}
+\usepackage[all]{xy} \usepackage{fancybox} \usepackage{xeCJK}
+\newtheorem*{theo}{定理} 
+\newtheorem*{exa}{习题}
+\newtheorem*{rem}{评论}
+\newenvironment{theorem}
+{\bigskip\begin{mdframed}\begin{theo}}
+    {\end{theo}\end{mdframed}\bigskip} 
+\newenvironment{remark}
+{\bigskip\begin{mdframed}\begin{rem}}
+    {\end{rem}\end{mdframed}\bigskip} 
+\newenvironment{example}
+{\bigskip\begin{mdframed}\begin{exa}}
+    {\end{exa}\end{mdframed}\bigskip}
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\newcommand{\D}{\displaystyle}\newcommand{\ri}{\Rightarrow}
+\newcommand{\ds}{\displaystyle} \renewcommand{\ni}{\noindent}
+\newcommand{\pa}{\partial} \newcommand{\Om}{\Omega}
+\newcommand{\om}{\omega} \newcommand{\sik}{\sum_{i=1}^k}
+\newcommand{\vov}{\Vert\omega\Vert} \newcommand{\Umy}{U_{\mu_i,y^i}}
+\newcommand{\lamns}{\lambda_n^{^{\scriptstyle\sigma}}}
+\newcommand{\chiomn}{\chi_{_{\Omega_n}}}
+\newcommand{\ullim}{\underline{\lim}} \newcommand{\bsy}{\boldsymbol}
+\newcommand{\mvb}{\mathversion{bold}} \newcommand{\la}{\lambda}
+\newcommand{\La}{\Lambda} \newcommand{\va}{varepsilon}
+\newcommand{\be}{\beta} \newcommand{\al}{\alpha}
+\newcommand{\dis}{\displaystyle} \newcommand{\R}{{\mathbb R}}
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+\newcommand{\N}{{\mathbb N}} \newcommand{\cF}{{\mathcal F}}
+\newcommand{\gB}{{\mathfrak B}} \newcommand{\eps}{\epsilon}\newcommand{\op}{\operatorname}
+\renewcommand\refname{参考文献}\renewcommand\figurename{图}
+\usepackage[]{caption2} \renewcommand{\captionlabeldelim}{}
+\begin{document}
+\title{\huge{\bf{线性代数应该这样学,习题5.14}}} \author{\small{叶卢
+    庆\footnote{叶卢庆(1992---),男,杭州师范大学理学院数学与应用数学专业
+      本科在读,E-mail:yeluqingmathematics@gmail.com}}}
+\maketitle\ni
+\begin{example}
+  设$S,T\in \mathcal{L}(V)$,并且$S$是可逆的.证明:若$p\in
+  \mathcal{P}(\mathbf{F})$是多项式,则
+$$
+p(S^{-1}TS)=Sp(T)S^{-1}.
+$$
+\end{example}
+\begin{proof}[\textbf{评论}]
+  这个题目的证明是很容易的.我只想谈谈其背后的意义.显然,矩阵和线性变换是
+  有区别的.矩阵,其实是给定了有序基之后,线性变换的具体表示,表示的是有序
+  基里各个向量之间的线性关系.如果没有给定有序基,那么矩阵就是没有意义的.而
+  线性变换是独立于基的,无论有没有选定一组有序基,线性变换始终在那里——当
+  然,如果没有选定有序基的话,你想要描述一个线性变换将会变得相当困难.选定
+  了有序基之后,描述线性变换就简单了.一般来说,在不同有序基下,同一个线性
+  变换$T$会有不同的矩阵表示,但是这些不同的矩阵都是相似的(similar).考虑
+  了在不同有序基下的同一个线性变换后,我们再来考虑在同一个有序基下的不同
+  线性变换.如果在同一个有序基$\alpha$下的不同线性变换$T_1,T_2$所对应的
+  矩阵是相似的,这意味着什么呢？这意味着,存在一组基$\beta$,换$\beta$来看$T_1$,将会看
+  到在$\alpha$下看$T_2$同样的效果.
+\end{proof}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

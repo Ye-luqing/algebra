@@ -1,0 +1,112 @@
+﻿\documentclass[a4paper]{article}
+\usepackage{amsmath,amsfonts,amsthm,amssymb} \usepackage{bm}
+\usepackage{draftwatermark}
+\SetWatermarkText{http://blog.sciencenet.cn/u/Yaleking}%设置水印文字
+\SetWatermarkLightness{0.8}%设置水印亮度
+\SetWatermarkScale{0.35}%设置水印大小
+\usepackage{hyperref} \usepackage{geometry} \usepackage{yhmath}
+\usepackage{pstricks-add} \usepackage{framed,mdframed}
+\usepackage{graphicx,color} \usepackage{mathrsfs,xcolor}
+\usepackage[all]{xy} \usepackage{fancybox} \usepackage{xeCJK}
+\newtheorem*{theo}{定理} 
+\newtheorem{exa}{例}
+\newenvironment{theorem}
+{\bigskip\begin{mdframed}\begin{theo}}
+    {\end{theo}\end{mdframed}\bigskip} 
+\newenvironment{example}
+{\bigskip\begin{mdframed}\begin{exa}}
+    {\end{exa}\end{mdframed}\bigskip}
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\newcommand{\D}{\displaystyle}\newcommand{\ri}{\Rightarrow}
+\newcommand{\ds}{\displaystyle} \renewcommand{\ni}{\noindent}
+\newcommand{\pa}{\partial} \newcommand{\Om}{\Omega}
+\newcommand{\om}{\omega} \newcommand{\sik}{\sum_{i=1}^k}
+\newcommand{\vov}{\Vert\omega\Vert} \newcommand{\Umy}{U_{\mu_i,y^i}}
+\newcommand{\lamns}{\lambda_n^{^{\scriptstyle\sigma}}}
+\newcommand{\chiomn}{\chi_{_{\Omega_n}}}
+\newcommand{\ullim}{\underline{\lim}} \newcommand{\bsy}{\boldsymbol}
+\newcommand{\mvb}{\mathversion{bold}} \newcommand{\la}{\lambda}
+\newcommand{\La}{\Lambda} \newcommand{\va}{\varepsilon}
+\newcommand{\be}{\beta} \newcommand{\al}{\alpha}
+\newcommand{\dis}{\displaystyle} \newcommand{\R}{{\mathbb R}}
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+\newcommand{\N}{{\mathbb N}} \newcommand{\cF}{{\mathcal F}}
+\newcommand{\gB}{{\mathfrak B}} \newcommand{\eps}{\epsilon}
+\renewcommand\refname{参考文献}\renewcommand\figurename{图}
+\usepackage[]{caption2} \renewcommand{\captionlabeldelim}{}
+\begin{document}
+\title{\huge{\bf{Cayley-Hamilton定理}}} \author{\small{叶卢庆\footnote{叶卢
+      庆(1992---),男,杭州师范大学理学院数学与应用数学专业本科在
+      读,E-mail:yeluqingmathematics@gmail.com}}}
+\maketitle\ni
+设$V$是$\mathbf{C}$上的一个$m(m\geq 1)$维线性空间.$T$是$V$上的线性算子.设
+$\alpha$是$V$里的一组有序基,线性算子$T$在$\alpha$下的矩阵为
+$[T]_{\alpha}^{\alpha}$.下面我们来看关于$[T]_{\alpha}^{\alpha}$的多项
+式
+$$
+P([T]_{\alpha}^{\alpha})=a_n([T]_{\alpha}^{\alpha})^n+\cdots+a_1[T]_{\alpha}^{\alpha}+a_0I,
+$$
+其中$a_n,\cdots,a_0\in \mathbf{C}$.如果$[T]_{\alpha}^{\alpha}$是可对角
+化矩阵,则存在$V$的一组基$\beta$,使得$[T]_{\beta}^{\beta}$是对角阵,且
+$$
+[T]_{\alpha}^{\alpha}=[I]_{\beta}^{\alpha}[T]_{\beta}^{\beta}[I]_{\alpha}^{\beta},
+$$
+于是,
+\begin{align*}
+P([T]_{\alpha}^{\alpha})&=P([I]_{\beta}^{\alpha}[T]_{\beta}^{\beta}[I]_{\alpha}^{\beta})=[I]_{\beta}^{\alpha}P([T]_{\beta}^{\beta})[I]_{\alpha}^{\beta}.
+\end{align*}
+由于$[T]_{\beta}^{\beta}$是对角阵,因此$P([T]_{\beta}^{\beta})$的计算会
+变得特别容易,详细地说,此时,关于矩阵$[T]_{\beta}^{\beta}$的多项式
+$P([T]_{\beta}^{\beta})$已经变成了关于$[T]_{\beta}^{\beta}$的所有的特
+征值的一组同样的多项式.由于对角阵$[T]_{\beta}^{\beta}$的对角线上的每个数都是$T$
+的特征值,因此特别地,如果$P$是关于线性映射$T$的特征多项式,那么
+$P([T]_{\beta}^{\beta})=\mathbf{0}$,于是,
+$$
+P([T]_{\alpha}^{\alpha})=P([I]_{\beta}^{\alpha}[T]_{\beta}^{\beta}[I]_{\alpha}^{\beta})=[I]_{\beta}^{\alpha}P([T]_{\beta}^{\beta})[I]_{\alpha}^{\beta}=\mathbf{0}.
+$$
+这就是关于对角阵的Cayley-Hamilton定理.\\
+
+\ni 当$[T]_{\alpha}^{\alpha}$不是可对角化矩阵,那么
+$[T]_{\alpha}^{\alpha}$不再可对角化,但是可上三角化.也就是说,存在$V$的
+一组基$\gamma$,使得$[T]_{\gamma}^{\gamma}$是一个上三角矩阵,该上三角矩
+阵对角线上的元素都是$T$的特征值.然后,设上三角矩阵
+$[T]_{\gamma}^{\gamma}$的对角线的第$1,2,\cdots,m$行的特征值分别为
+$\lambda_1,\lambda_2,\cdots,\lambda_m$.对上三角矩阵
+$[T]_{\gamma}^{\gamma}$的对角线进行微扰,使得其对角线上的元素的第
+$1,2,\cdots,m$行分别变为
+$\lambda_1+\va_1,\lambda_2+\va_2,\cdots,\lambda_m+\va_m$.这样上三角矩
+阵$[T]_{\gamma}^{\gamma}$就变成了另一个上三角矩阵
+$[T']_{\gamma}^{\gamma}$.通过恰当地选取$\va_1,\va_2,\cdots,\va_m$,能使
+的$[T']_{\gamma}^{\gamma}$的对角线上的元素互不相同.这样线性算子$T'$就成了一个
+可对角化线性变换.因此,对于$T'$的特征多项式$P'$来
+说,$P([T']_{\tau}^{\tau})=\mathbf{0}$,其中$[T']_{\tau}^{\tau}$是$T'$关
+于$V$的任意一组基$\tau$的矩阵.令$\va_1,\va_2,\cdots,\va_m$趋于$0$的同
+时,保持$T'$的可对角化性不变,此时,$T'$的特征多项式$P'$会趋于$T$的特征多
+项式$P$,$T'$会趋于$T$.于是,即便当$T$不是可对角化的矩阵,Cayley-Hamilton
+定理对于$T$依然是成立的.
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

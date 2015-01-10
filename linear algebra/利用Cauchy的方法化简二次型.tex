@@ -1,0 +1,145 @@
+﻿\documentclass[a4paper]{article}
+\usepackage{amsmath,amsfonts,amsthm,amssymb} \usepackage{bm,euler}
+\usepackage{draftwatermark}
+\SetWatermarkText{http://blog.sciencenet.cn/u/Yaleking}%设置水印文字
+\SetWatermarkLightness{0.8}%设置水印亮度
+\SetWatermarkScale{0.35}%设置水印大小
+\usepackage{hyperref} \usepackage{geometry} \usepackage{yhmath}
+\usepackage{pstricks-add} \usepackage{framed,mdframed}
+\usepackage{graphicx,color} \usepackage{mathrsfs,xcolor}
+\usepackage[all]{xy} \usepackage{fancybox} \usepackage{xeCJK}
+\newtheorem*{theo}{定理} 
+\newtheorem*{exa}{习题}
+\newtheorem*{rem}{评论}
+\newenvironment{theorem}
+{\bigskip\begin{mdframed}\begin{theo}}
+    {\end{theo}\end{mdframed}\bigskip}
+\newenvironment{remark}
+{\bigskip\begin{mdframed}\begin{rem}}
+    {\end{rem}\end{mdframed}\bigskip} 
+\newenvironment{example}
+{\bigskip\begin{mdframed}\begin{exa}}
+    {\end{exa}\end{mdframed}\bigskip}
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\newcommand{\D}{\displaystyle}\newcommand{\ri}{\Rightarrow}
+\newcommand{\ds}{\displaystyle} \renewcommand{\ni}{\noindent}
+\newcommand{\pa}{\partial} \newcommand{\Om}{\Omega}
+\newcommand{\om}{\omega} \newcommand{\sik}{\sum_{i=1}^k}
+\newcommand{\vov}{\Vert\omega\Vert} \newcommand{\Umy}{U_{\mu_i,y^i}}
+\newcommand{\lamns}{\lambda_n^{^{\scriptstyle\sigma}}}
+\newcommand{\chiomn}{\chi_{_{\Omega_n}}}
+\newcommand{\ullim}{\underline{\lim}} \newcommand{\bsy}{\boldsymbol}
+\newcommand{\mvb}{\mathversion{bold}} \newcommand{\la}{\lambda}
+\newcommand{\La}{\Lambda} \newcommand{\va}{varepsilon}
+\newcommand{\be}{\beta} \newcommand{\al}{\alpha}
+\newcommand{\dis}{\displaystyle} \newcommand{\R}{{\mathbb R}}
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+\newcommand{\N}{{\mathbb N}} \newcommand{\cF}{{\mathcal F}}
+\newcommand{\gB}{{\mathfrak B}} \newcommand{\eps}{\epsilon}\newcommand{\op}{\operatorname}
+\renewcommand\refname{参考文献}\renewcommand\figurename{图}
+\usepackage[]{caption2} \renewcommand{\captionlabeldelim}{}
+\begin{document}
+\title{\huge{\bf{利用Cauchy的方法化简二次型}}} \author{\small{叶卢
+    庆\footnote{叶卢庆(1992---),男,杭州师范大学理学院数学与应用数学专业
+      本科在读,E-mail:yeluqingmathematics@gmail.com}}}
+\maketitle\ni
+这道题目是Victor J.Katz 著的《数学史通论》习题15.40.
+\begin{example}
+  用Cauchy的方法,找一个正交变换把二次型$2x^2+6xy+5y^2$转换成平方的和或
+  者差.
+\end{example}
+\begin{proof}[\textbf{解}]
+  设$f(x,y)=2x^2+6xy+5y^2=k$,其中$k$是一个待定的实数,$f$是二元实变量函
+  数.$f(x,y)=k$在平面直角坐标系上的图像是一个椭圆.为了将
+  $f(x,y)$化为平方和或者差,我们需要将椭圆摆正成为中学里常见的标准的椭
+  圆.为此我们需要确定椭圆$f(x,y)=k$的长轴和短轴.存在以原点为中心的
+  圆$g(x,y)=x^2+y^2=r$,该圆与椭圆相切.在切点处,圆的切线和椭圆的切线重合.设切
+  点为$(x_{0},y_{0})$,根据隐函数定理,可得
+$$
+\left.\frac{\pa y}{\pa x}\right|_{(x,y)=(x_0,y_0)}=-\frac{\frac{\pa g}{\pa x}(x_{0},y_{0})}{\frac{\pa g}{\pa y}(x_0,y_0)}=-\frac{\frac{\pa f}{\pa x}(x_{0},y_{0})}{\frac{\pa f}{\pa y}(x_0,y_0)}=\lambda,
+$$
+也就是说,
+$$
+x_0^2+x_0y_0=y_0^2.
+$$
+解得 $\frac{y_0}{x_0}=\frac{1+\sqrt{5}}{2}$或$\frac{1-\sqrt{5}}{2}$,
+可见,该椭圆的两条轴所指示的向量分别为
+$(1,\frac{1+\sqrt{5}}{2}),(1,\frac{1-\sqrt{5}}{2})$.设
+$\alpha=((1,0),(0,1))=(v_1,v_2)$是$\mathbf{R}^2$的一组标准有序
+基
+,$\beta=((\frac{\sqrt{2}}{\sqrt{5+\sqrt{5}}},\frac{\sqrt{5}+1}{\sqrt{10+2
+  \sqrt{5}}}),(\frac{\sqrt{2}}{\sqrt{5-\sqrt{5}}},\frac{1-\sqrt{5}}{\sqrt{10-2
+\sqrt{5}}}))=(w_1,w_2)$是
+$\mathbf{R}^2$的另一组标准有序基.易得
+$$
+[I]_{\beta}^{\alpha}=
+\begin{pmatrix}
+  \frac{\sqrt{2}}{\sqrt{5+\sqrt{5}}}&\frac{\sqrt{2}}{\sqrt{5-\sqrt{5}}}\\
+\frac{\sqrt{5}+1}{\sqrt{10+2
+  \sqrt{5}}}&\frac{1-\sqrt{5}}{\sqrt{10-2
+\sqrt{5}}}
+\end{pmatrix},
+$$
+$$
+[I]_{\alpha}^{\beta}=
+\begin{pmatrix}
+  \frac{\sqrt{15}-\sqrt{3}}{6}&\frac{\sqrt{2}}{2}\\
+\frac{\sqrt{15}+\sqrt{3}}{6}&-\frac{\sqrt{2}}{2}
+\end{pmatrix}.
+$$
+则
+$$
+\begin{pmatrix}
+  x\\
+y
+\end{pmatrix}=\begin{pmatrix}
+  \frac{\sqrt{2}}{\sqrt{5+\sqrt{5}}}&\frac{\sqrt{2}}{\sqrt{5-\sqrt{5}}}\\
+\frac{\sqrt{5}+1}{\sqrt{10+2
+  \sqrt{5}}}&\frac{1-\sqrt{5}}{\sqrt{10-2
+\sqrt{5}}}
+\end{pmatrix}
+\begin{pmatrix}
+  x'\\
+y'
+\end{pmatrix}
+$$
+代入二次型,可得
+$$
+\frac{25+11 \sqrt{5}}{5+\sqrt{5}}x'^2+\frac{25-11 \sqrt{5}}{5-\sqrt{5}}y'^2=k,
+$$
+即
+$$
+\frac{7+3 \sqrt{5}}{2}x'^2+\frac{7-3 \sqrt{5}}{2}y'^2=k.
+$$
+\end{proof}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

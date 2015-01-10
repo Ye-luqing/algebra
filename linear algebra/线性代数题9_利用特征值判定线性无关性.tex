@@ -1,0 +1,56 @@
+﻿\documentclass[a4paper]{article}
+\usepackage{amsmath,amsfonts,amsthm,amssymb} \usepackage{bm}
+\usepackage{draftwatermark,euler}
+\SetWatermarkText{http://blog.sciencenet.cn/u/Yaleking}%设置水印文字
+\SetWatermarkLightness{0.8}%设置水印亮度
+\SetWatermarkScale{0.35}%设置水印大小
+\usepackage{hyperref} \usepackage{geometry} \usepackage{yhmath}
+\usepackage{pstricks-add} \usepackage{framed,mdframed}
+\usepackage{graphicx,color} \usepackage{mathrsfs,xcolor}
+\usepackage[all]{xy} \usepackage{fancybox} \usepackage{xeCJK}
+\newtheorem*{theo}{定理} 
+\newtheorem*{exe}{习题}
+\newenvironment{theorem}
+{\bigskip\begin{mdframed}\begin{theo}}
+    {\end{theo}\end{mdframed}\bigskip} 
+\newenvironment{exercise}
+{\bigskip\begin{mdframed}\begin{exe}}
+    {\end{exe}\end{mdframed}\bigskip}
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\newcommand{\D}{\displaystyle}\newcommand{\ri}{\Rightarrow}
+\newcommand{\ds}{\displaystyle} \renewcommand{\ni}{\noindent}
+\newcommand{\pa}{\partial} \newcommand{\Om}{\Omega}
+\newcommand{\om}{\omega} \newcommand{\sik}{\sum_{i=1}^k}
+\newcommand{\vov}{\Vert\omega\Vert} \newcommand{\Umy}{U_{\mu_i,y^i}}
+\newcommand{\lamns}{\lambda_n^{^{\scriptstyle\sigma}}}
+\newcommand{\chiomn}{\chi_{_{\Omega_n}}}
+\newcommand{\ullim}{\underline{\lim}} \newcommand{\bsy}{\boldsymbol}
+\newcommand{\mvb}{\mathversion{bold}} \newcommand{\la}{\lambda}
+\newcommand{\La}{\Lambda} \newcommand{\va}{\varepsilon}
+\newcommand{\be}{\beta} \newcommand{\al}{\alpha}
+\newcommand{\dis}{\displaystyle} \newcommand{\R}{{\mathbb R}}
+\newcommand{\N}{{\mathbb N}} \newcommand{\cF}{{\mathcal F}}
+\newcommand{\gB}{{\mathfrak B}} \newcommand{\eps}{\epsilon}
+\renewcommand\refname{参考文献}\renewcommand\figurename{图}
+\usepackage[]{caption2} \renewcommand{\captionlabeldelim}{}
+\begin{document}
+\title{\huge{\bf{线性代数,习题 9}}} \author{\small{叶卢庆\footnote{叶卢庆(1992---),E-mail:yeluqingmathematics@gmail.com}}}
+\maketitle
+\begin{exercise}
+设 $A$ 是一个 $4\times 4$ 的矩阵,且 $v_1,\cdots,v_3$ 是 $A$ 的 $3$ 个
+特征向量,对应的特征值分别是 $\lambda_1,\lambda_{2},\lambda_3$,且这 $3$ 个特
+征值互不相同.则向量 $v_1,v_{2},v_3$ 线性无关.
+\end{exercise}
+\begin{proof}[\textbf{证明}]
+设$A$对应的线性变换为$L_A$.当 $k=1,2$ 时,$v_1,v_2$ 肯定线性无关.当$k=3$时,如果
+$v_1,v_2,v_3$ 线性相关,由于$v_1,v_2$ 线性无关,因此必有
+$$
+v_3=a_1v_1+a_2v_2\Rightarrow L_A(v_3)=a_1L_A(v_1)+a_2L_A(v_2)=a_1\lambda_1v_1+a_2\lambda_2v_2=\lambda_3v_3,
+$$
+可见,$a_1\lambda_3=a_1\lambda_1,a_2\lambda_3=a_2\lambda_2$.由于
+$a_1,a_2$ 不全为 $0$,因此必有 $\lambda_1=\lambda_3$ 或
+$\lambda_2=\lambda_3$,与假设矛盾.因此 $v_1,v_2,v_3$ 线性无关.
+\end{proof}
+\end{document}

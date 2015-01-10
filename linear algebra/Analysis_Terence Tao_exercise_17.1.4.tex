@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx,color}
+\usepackage{mathrsfs}
+\usepackage[all]{xy}
+\usepackage{fancybox}
+\usepackage{CJKutf8}
+\newtheorem{thm}{定理}
+\newtheorem{lem}{引理}
+\newtheorem{note}{注}
+\newtheorem{exa}{例}
+\newtheorem{exe}{习题}
+\begin{document}
+\renewcommand{\refname}{参考文献}
+\begin{CJK}{UTF8}{gbsn}
+  \title{陶哲轩实分析习题17.1.4}\author{叶卢庆}\date{}
+  \maketitle\noindent
+  设$T:\mathbf{R}^n\to\mathbf{R}^m$是线性变换，证明，存在数$M>0$,使得
+  对于一切$x\in\mathbf{R}^n$,$||T(x)||\leq M||x||$.\\\\
+\begin{proof}[证明]
+  设$T$对应的矩阵为
+  \begin{equation}
+    \begin{pmatrix}
+      a_{11}&\cdots&a_{1n}\\
+\vdots&\cdots&\vdots\\
+a_{m1}&\cdots&a_{mn}\\
+    \end{pmatrix}
+  \end{equation}
+$\forall x=(a_1,\cdots,a_n)\in\mathbf{R}^n$,
+\begin{equation}
+  T(x)=\begin{pmatrix}
+    a_{11}&\cdots&a_{1n}\\
+\vdots&\cdots&\vdots\\
+a_{m1}&\cdots&a_{mn}\\
+  \end{pmatrix}\begin{pmatrix}
+    a_1\\
+\vdots\\
+a_n\\
+  \end{pmatrix}
+\end{equation}
+则
+\begin{equation}
+||T(x)|| ^2= \sum_{k=1}^m(a_{k1}a_1+\cdots+a_{kn}a_n)^2
+\end{equation}
+根据柯西不等式，
+\begin{equation}
+(a_{k1}a_1+\cdots+a_{kn}a_n)^2\leq (a_{k1}^2+\cdots+a_{kn}^2)(a_1^2+\cdots+a_n^2)
+\end{equation}
+因此
+\begin{equation}
+  \sum_{k=1}^m(a_{k1}a_1+\cdots+a_{kn}a_n)^2\leq (a_1^2+\cdots+a_n^2)(\sum_{i=1}^m\sum_{j=1}^na_{ij}^2)
+\end{equation}
+可见，令
+\begin{equation}
+M=\sqrt{\sum_{i=1}^m\sum_{j=1}^na_{ij}^2}  
+\end{equation}
+即可.
+
+
+
+
+
+  
+\end{proof}
+
+  
+  
+  
+  
+  \bibliographystyle{unsrt}
+  % \bibliography{}
+\end{CJK}
+\end{document}

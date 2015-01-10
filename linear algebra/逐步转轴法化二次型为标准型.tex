@@ -1,0 +1,284 @@
+\documentclass[a4paper]{article}
+\usepackage{amsmath,amsfonts,amsthm,amssymb} \usepackage{bm}
+\usepackage{draftwatermark}
+\SetWatermarkText{http://blog.sciencenet.cn/u/Yaleking}%设置水印文字
+\SetWatermarkLightness{0.8}%设置水印亮度
+\SetWatermarkScale{0.35}%设置水印大小
+\usepackage{hyperref} \usepackage{geometry} \usepackage{yhmath,euler}
+\usepackage{pstricks-add} \usepackage{framed,mdframed}
+\usepackage{graphicx,color} \usepackage{mathrsfs,xcolor}
+\usepackage[all]{xy} \usepackage{fancybox} \usepackage{xeCJK}
+\newtheorem*{theo}{定理} 
+\newtheorem{exa}{例}
+\newenvironment{theorem}
+{\bigskip\begin{mdframed}\begin{theo}}
+    {\end{theo}\end{mdframed}\bigskip} 
+\newenvironment{example}
+{\bigskip\begin{mdframed}\begin{exa}}
+    {\end{exa}\end{mdframed}\bigskip}
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+\setlength\parindent{0pt}
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\newcommand{\D}{\displaystyle}\newcommand{\ri}{\Rightarrow}
+\newcommand{\ds}{\displaystyle} \renewcommand{\ni}{\noindent}
+\newcommand{\pa}{\partial} \newcommand{\Om}{\Omega}
+\newcommand{\om}{\omega} \newcommand{\sik}{\sum_{i=1}^k}
+\newcommand{\vov}{\Vert\omega\Vert} \newcommand{\Umy}{U_{\mu_i,y^i}}
+\newcommand{\lamns}{\lambda_n^{^{\scriptstyle\sigma}}}
+\newcommand{\chiomn}{\chi_{_{\Omega_n}}}
+\newcommand{\ullim}{\underline{\lim}} \newcommand{\bsy}{\boldsymbol}
+\newcommand{\mvb}{\mathversion{bold}} \newcommand{\la}{\lambda}
+\newcommand{\La}{\Lambda} \newcommand{\va}{\varepsilon}
+\newcommand{\be}{\beta} \newcommand{\al}{\alpha}
+\newcommand{\dis}{\displaystyle} \newcommand{\R}{{\mathbb R}}
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+\newcommand{\N}{{\mathbb N}} \newcommand{\cF}{{\mathcal F}}
+\newcommand{\gB}{{\mathfrak B}} \newcommand{\eps}{\epsilon}
+\renewcommand\refname{参考文献}\renewcommand\figurename{图}
+\usepackage[]{caption2} \renewcommand{\captionlabeldelim}{}
+\begin{document}
+\title{\huge{\bf{逐步转轴法化实二次型为标准型}}} \author{\small{叶卢
+    庆\footnote{叶卢庆(1992---),男,杭州师范大学理学院数学与应用数学专业
+      本科在读,E-mail:yeluqingmathematics@gmail.com}}}
+\maketitle
+我们先来看两个例子.通过这两个例子,我们来演示如何使用逐步转轴法消去二次
+型中的各交叉项,最后成为标准型.
+\begin{example}[中国科学技术大学2012年硕士学位研究生入学考试试题]
+  在$\mathbf{R}^3$中,方程$xy-yz+zx=1$所表示的二次曲面类型为？
+\end{example}
+\begin{proof}[\textbf{解}]
+  我们先考虑化去交叉项$xy$.令
+$$
+\begin{pmatrix}
+  x\\
+  y\\
+  z
+\end{pmatrix}=
+\begin{pmatrix}
+  \cos\alpha&-\sin\alpha&0\\
+  \sin\alpha&\cos\alpha&0\\
+  0&0&1
+\end{pmatrix}
+\begin{pmatrix}
+  x'\\
+  y'\\
+  z'
+\end{pmatrix}
+$$
+代入二次型
+\begin{equation}
+  \label{eq:1}
+  xy-yz+zx
+\end{equation}
+整理后可得
+\begin{equation}
+  \label{eq:2}
+  x'^{2}\cos\alpha\sin\alpha-y'^{2}\sin\alpha\cos\alpha+x'y'\cos
+  2\alpha+y'z'(\cos\alpha-\sin\alpha)+x'z'(\cos\alpha-\sin\alpha).
+\end{equation}
+令$x'y'$前面的系数等于$0$,即让$\cos 2\alpha=0$,此时$\alpha$可以
+为$\frac{\pi}{4}$.在这个时候,$y'z'$和$x'z'$前面的系数也恰好
+为$0$.此时,二次型\eqref{eq:2}可以化为
+$$
+\frac{1}{2}x'^2-\frac{1}{2}y'^2.
+$$
+也即,通过正交替换,方程$xy-yz+zx=1$变成了$x'^2-y'^2=2$.这是一个双曲柱面.
+\end{proof}
+\begin{example}
+  将二次型
+$$
+f(x_{1},x_2,x_3)=2x_{1}^{2} + 5x_{2}^{2} +
+5x_{3}^{2}+4x_{1}x_{2}-4x_{1}x_{3} - 8x_{2}x_3
+$$
+化为标准型.
+\end{example}
+\begin{proof}[\textbf{解}]
+  我们先考虑化去交叉项$x_1x_2$.令
+$$
+\begin{pmatrix}
+  x_1\\
+  x_2\\
+  x_3
+\end{pmatrix}=
+\begin{pmatrix}
+  \cos\alpha&-\sin\alpha&0\\
+  \sin\alpha&\cos\alpha&0\\
+  0&0&1
+\end{pmatrix}
+\begin{pmatrix}
+  x_1'\\
+  x_2'\\
+  x_3'
+\end{pmatrix},
+$$
+代入二次型$f(x_1,x_2,x_3)$,整理可得
+\begin{align*}
+  f(x_1,x_2,x_3)=&
+  (2+3\sin^2\alpha+4\sin\alpha\cos\alpha)x_1'^2+(4\cos 2\alpha+3\sin
+  2\alpha)x_1'x_2'+(2+3\cos^2\alpha-4\sin\alpha\cos\alpha)x_2'^2\\&-(4\cos\alpha+8\sin\alpha)x_1'x_3'+(4\sin\alpha-8\cos\alpha)x_2'x_3'+5x_3'^2.
+\end{align*}
+令$x_1'x_2'$前面的系数$4\cos 2\alpha+3\sin
+2\alpha$为$0$,解得$\sin\alpha=\frac{2
+  \sqrt{5}}{5}$,$\cos\alpha=\frac{\sqrt{5}}{5}$是一组解.这个时候,二次
+型$f(x_1,x_2,x_3)$成为
+\begin{align*}
+  6x_1'^2+x_2'^2-4 \sqrt{5}x_1'x_3'+5x_3'^2.
+\end{align*}
+我们很幸运地发现,$x_2'x_3'$同时也消失了.然后我们试图消去最后的交叉
+项$x_1'x_3'$.令
+$$
+\begin{pmatrix}
+  x_1'\\
+  x_2'\\
+  x_3'
+\end{pmatrix}=
+\begin{pmatrix}
+  \cos\beta&0&-\sin\beta\\
+  0&1&0\\
+  \sin\beta&0&\cos\beta
+\end{pmatrix}
+\begin{pmatrix}
+  x_1''\\
+  x_2''\\
+  x_3''
+\end{pmatrix},
+$$
+则二次型$f(x_1,x_2,x_3)$成为
+$$
+(5+\cos^2\beta-4 \sqrt{5}\cos\beta\sin\beta)x_1''^2+x_2''^2+(-\sin
+2\beta-4 \sqrt{5}\cos 2\beta)x_1''x_3''+(5+\sin^2\beta+4
+\sqrt{5}\sin\beta\cos\beta)x_3''^2.
+$$
+令 $x_1''x_3''$前面的系数为零,即让$-\sin 2\beta-4 \sqrt{5}\cos
+2\beta=0$,解得$\cos\beta=\frac{2}{3}$,$\sin\beta=\frac{\sqrt{5}}{3}$是
+一组解.此时,二次型$f(x_1,x_2,x_3)$成了
+$$
+x_1''^2+x_2''^2+10x_3''^2.
+$$
+这样就成功地把二次型$f(x_1,x_2,x_3)$化为了标准型.其中
+\begin{align*}
+  \begin{pmatrix}
+    x_1''\\
+    x_2''\\
+    x_3''
+  \end{pmatrix}=\begin{pmatrix}
+    \cos-\beta&0&-\sin-\beta\\
+    0&1&0\\
+    \sin-\beta&0&\cos-\beta
+  \end{pmatrix}
+  \begin{pmatrix}
+    x_1'\\
+    x_2'\\
+    x_3'
+  \end{pmatrix}&=\begin{pmatrix}
+    \cos-\beta&0&-\sin-\beta\\
+    0&1&0\\
+    \sin-\beta&0&\cos-\beta
+  \end{pmatrix}\begin{pmatrix}
+    \cos-\alpha&-\sin-\alpha&0\\
+    \sin-\alpha&\cos-\alpha&0\\
+    0&0&1
+  \end{pmatrix}
+  \begin{pmatrix}
+    x\\
+    y\\
+    z
+  \end{pmatrix}\\&=\begin{pmatrix}
+    \cos\beta&0&\sin\beta\\
+    0&1&0\\
+    -\sin\beta&0&\cos\beta
+  \end{pmatrix}\begin{pmatrix}
+    \cos\alpha&\sin\alpha&0\\
+    -\sin\alpha&\cos\alpha&0\\
+    0&0&1
+  \end{pmatrix}
+  \begin{pmatrix}
+    x\\
+    y\\
+    z
+  \end{pmatrix}\\&=
+  \begin{pmatrix}
+    \frac{2 \sqrt{5}}{15}&\frac{4 \sqrt{5}}{15}&\frac{\sqrt{5}}{3}\\
+    -\frac{2 \sqrt{5}}{5}&\frac{\sqrt{5}}{5}&0\\
+    -\frac{1}{3}&-\frac{2}{3}&\frac{2}{3}
+  \end{pmatrix}
+  \begin{pmatrix}
+    x\\
+    y\\
+    z
+  \end{pmatrix}.
+\end{align*}
+\end{proof}
+对于一般的实二次型
+$$
+f(x_1,x_2,\cdots,x_n)=a_{11}x_1^2+a_{22}x_2^2+\cdots+a_{nn}x_n^2+2a_{12}x_1x_2+2a_{13}x_1x_3+\cdots+2a_{n-1,n}x_{n-1}x_n
+$$
+来说,我们可以先考虑通过转轴去掉交叉项$x_1x_2$,为此,令
+$$
+\begin{cases}
+  x_1=x_{1}^{(1,2)}\cos\alpha_{1,2}-x_{2}^{(1,2)}\sin\alpha_{1,2},\\
+  x_2=x_{1}^{(1,2)}\sin\alpha_{1,2}+x_{2}^{(1,2)}\cos\alpha_{1,2},\\
+  x_3=x_3^{(1,2)},\\
+  \vdots\\
+  x_n=x_n^{(1,2)}.
+\end{cases}
+$$
+这样,经过替换后,可得
+$$
+f(x_1,x_2,\cdots,x_n)=f_{1,2}(x_1^{(1,2)},x_2^{(1,2)},\cdots,x_n^{(1,2)}),
+$$
+通过选取特定的$\alpha_{1,2}$,必定能
+使$f_{1,2}(x_1^{(1,2)},x_2^{(1,2)},\cdots,x_n^{(1,2)})$中不
+含$x_1^{(1,2)}x_2^{(1,2)}$这一项.此
+时,$f_{1,2}(x_1^{(1,2)},x_2^{(1,2)},\cdots,x_n^{(1,2)})$中交叉项只剩
+下
+$x_1^{(1,2)}x_3^{(1,2)},\cdots,x_1^{(1,2)}x_n^{(1,2)},x_2^{(1,2)}x_{3}^{(1,2)},\cdots,x_2^{(1,2)}x_{n}^{(1,2)},\cdots,x_{n-1}^{(1,2)}x_n^{(1,2)}$.然
+后我们再考虑通过转轴去掉交叉项$x_1^{(1,2)}x_3^{(1,2)}$,为此,只需要令
+$$
+\begin{cases} 
+  x_1^{(1,2)}=x_1^{(1,3)}\cos\alpha_{1,3}-x_3^{(1,3)}\sin\alpha_{1,3},\\
+  x_2^{(1,2)}=x_2^{(1,3)},\\
+  x_3^{(1,2)}=x_1^{(1,3)}\sin\alpha_{1,3}+x_3^{(1,3)}\cos\alpha_{1,3},\\
+  \vdots\\
+  x_n^{(1,2)}=x_n^{(1,3)}
+\end{cases},
+$$
+经过替换后,
+$$
+f_{1,2}(x_1^{(1,2)},x_2^{(1,2)},\cdots,x_n^{(1,2)})=f_{1,3}(x_1^{(1,3)},x_2^{(1,3)},\cdots,x_n^{(1,3)}),
+$$
+通过选取特定的$\alpha_{1,3}$,必定能使
+得$f_{1,3}(x_1^{(1,3)},x_2^{(1,3},\cdots,x_n^{(1,3})$中的交叉
+项$x_1^{(1,3}x_3^{(1,3)}$消去,此时,
+$f_{1,3}(x_1^{(1,3)},x_2^{(1,3)},\cdots,x_n^{(1,3)})$中交叉项只剩
+下
+$x_1^{(1,3)}x_4^{(1,3)},\cdots,x_1^{(1,3)}x_n^{(1,3)},x_2^{(1,3)}x_{3}^{(1,3)},\cdots,x_2^{(1,3)}x_{n}^{(1,3)},\cdots,x_{n-1}^{(1,3)}x_n^{(1,3)}$.之
+后经过若干次类似的操作,会消去所有的交叉项,剩下的二次型
+$$
+f_{n-1,n}(x_1^{(n-1,n)},x_2^{(n-1,n)},\cdots,x_n^{(n-1,n)}),
+$$
+只含有平方项,而不含有交叉项.而且,
+\begin{align*}
+  \begin{pmatrix}
+    x_1^{(n-1,n)}\\
+    x_2^{(n-1,n)}\\
+    \vdots\\
+    x_n^{(n-1,n)}
+  \end{pmatrix}= A_{n-1,n}\cdots A_{13}A_{12}
+  \begin{pmatrix}
+    x_1\\
+    x_2\\
+    \vdots\\
+    x_n
+  \end{pmatrix},
+\end{align*}
+其中矩阵$A_{ij}$表示将直角坐标平面$x_i^{(i,j-1)}Ox_j^{(i,j-1)}$逆时针旋
+转$\alpha_{i,j-1}$角度(当$i< j-1$时)或者将直角坐标平
+面$x_i^{(i-1,n)}Oy_j^{(i-1,n)}$旋转$\alpha_{i-1,n}$角度(当$i=j-1$)的同
+时,保持其余的坐标轴不动的线性变换.这是高维空间中的旋转,又叫
+做\href{http://en.wikipedia.org/wiki/Givens_rotation}{Givens旋转}.\\\\
+
+我们发现,$A_{n-1,n}\cdots A_{13}A_{12}$表示一个正交矩阵,该正交矩阵代表
+若干个Givens旋转的复合.可见,使用逐步转轴法化二次型为标准型的总体效果,
+就是用正交变换化二次型为标准型.
+\end{document}

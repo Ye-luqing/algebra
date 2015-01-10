@@ -1,0 +1,102 @@
+﻿\documentclass[a4paper]{article}
+\usepackage{amsmath,amsfonts,amsthm,amssymb} \usepackage{bm}
+\usepackage{draftwatermark}
+\SetWatermarkText{http://blog.sciencenet.cn/u/Yaleking}%设置水印文字
+\SetWatermarkLightness{0.8}%设置水印亮度
+\SetWatermarkScale{0.35}%设置水印大小
+\usepackage{hyperref} \usepackage{geometry} \usepackage{yhmath}
+\usepackage{pstricks-add} \usepackage{framed,mdframed}
+\usepackage{graphicx,color} \usepackage{mathrsfs,xcolor}
+\usepackage[all]{xy} \usepackage{fancybox} \usepackage{xeCJK}
+\newtheorem*{theo}{定理} 
+\newtheorem*{exa}{习题}
+\newtheorem*{rem}{评论}
+\newenvironment{theorem}
+{\bigskip\begin{mdframed}\begin{theo}}
+    {\end{theo}\end{mdframed}\bigskip} 
+\newenvironment{remark}
+{\bigskip\begin{mdframed}\begin{rem}}
+    {\end{rem}\end{mdframed}\bigskip} 
+\newenvironment{example}
+{\bigskip\begin{mdframed}\begin{exa}}
+    {\end{exa}\end{mdframed}\bigskip}
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+\setCJKmainfont[BoldFont=SimHei]{SimSun}
+\newcommand{\D}{\displaystyle}\newcommand{\ri}{\Rightarrow}
+\newcommand{\ds}{\displaystyle} \renewcommand{\ni}{\noindent}
+\newcommand{\pa}{\partial} \newcommand{\Om}{\Omega}
+\newcommand{\om}{\omega} \newcommand{\sik}{\sum_{i=1}^k}
+\newcommand{\vov}{\Vert\omega\Vert} \newcommand{\Umy}{U_{\mu_i,y^i}}
+\newcommand{\lamns}{\lambda_n^{^{\scriptstyle\sigma}}}
+\newcommand{\chiomn}{\chi_{_{\Omega_n}}}
+\newcommand{\ullim}{\underline{\lim}} \newcommand{\bsy}{\boldsymbol}
+\newcommand{\mvb}{\mathversion{bold}} \newcommand{\la}{\lambda}
+\newcommand{\La}{\Lambda} \newcommand{\va}{varepsilon}
+\newcommand{\be}{\beta} \newcommand{\al}{\alpha}
+\newcommand{\dis}{\displaystyle} \newcommand{\R}{{\mathbb R}}
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+\newcommand{\N}{{\mathbb N}} \newcommand{\cF}{{\mathcal F}}
+\newcommand{\gB}{{\mathfrak B}} \newcommand{\eps}{\epsilon}\newcommand{\op}{\operatorname}
+\renewcommand\refname{参考文献}\renewcommand\figurename{图}
+\usepackage[]{caption2} \renewcommand{\captionlabeldelim}{}
+\begin{document}
+\title{\huge{\bf{欧式空间中的线性变换是正交的当且仅当它把一组正交基变
+      成一组正交基}}} \author{\small{叶卢
+    庆\footnote{叶卢庆(1992---),男,杭州师范大学理学院数学与应用数学专业
+      本科在读,E-mail:yeluqingmathematics@gmail.com}}}
+\maketitle\ni
+下面的定理来自张禾瑞等人编的《高等代数》第5版,定理8.3.2.
+\begin{theorem}
+设$V$是一个$n$维欧式空间.$\sigma$是$V$的一个线性变换.如果$\sigma$把$V$
+的一组标准正交基仍旧变成$V$的一组标准正交基,那么$\sigma$是$V$的一个正
+交变换.  
+\end{theorem}
+\begin{proof}[\bf{证明}]
+ 设$\alpha=(v_1,v_2,\cdots,v_n)$是$V$的一组有序标准正交基.则$V$中的任
+ 意两个向量$w_1,w_2$在$\alpha$下可以分别用坐标
+ $(k_1,k_2,\cdots,k_n),(l_1,l_2,\cdots,l_n)$表示.现在我们来看
+\begin{align*}
+\langle w_1,w_2\rangle&=\langle k_1v_1+k_2v_2+\cdots+k_nv_n,l_1v_1+l_2v_2+\cdots+l_nv_n\rangle\\&=k_1l_1+k_2l_2+\cdots+k_nl_n.
+\end{align*}
+设$\sigma$把标准正交基$\alpha$变成另一组标准正交基
+$\beta=(e_1,e_2,\cdots,e_n)$,则向量$w_1$在$\sigma$的作用下变成
+$$
+w_1'=k_1e_1+k_2e_2+\cdots+k_ne_n,
+$$
+向量$w_2$在$\sigma$的作用下变成
+$$
+w_2'=l_1e_1+l_2e_2+\cdots+l_ne_n.
+$$
+显然$\langle w_1',w_2'\rangle$仍然等于$k_1l_1+\cdots+\cdots+k_nl_n$.可
+见变换$\sigma$保内积,于是$\sigma$是正交变换.
+\end{proof}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
